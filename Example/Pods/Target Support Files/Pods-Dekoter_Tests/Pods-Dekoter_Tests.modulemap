@@ -1,0 +1,6 @@
+framework module Pods_Dekoter_Tests {
+  umbrella header "Pods-Dekoter_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

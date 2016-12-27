@@ -1,0 +1,6 @@
+use_frameworks!
+target 'Dekoter_Tests' do
+  pod 'Dekoter', :path => '../'
+  
+  
+end

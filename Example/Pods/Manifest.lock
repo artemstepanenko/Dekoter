@@ -1,0 +1,16 @@
+PODS:
+  - Dekoter (0.1.0)
+
+DEPENDENCIES:
+  - Dekoter (from `../`)
+
+EXTERNAL SOURCES:
+  Dekoter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Dekoter: a10ea8bdef98a5125569c70576921d2f2204c882
+
+PODFILE CHECKSUM: 37232acc617dc727a4b5caf74a55dd273bf5449b
+
+COCOAPODS: 1.1.1
