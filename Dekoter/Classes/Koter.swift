@@ -29,15 +29,15 @@ public class Koter {
     
     // MARK: - Property
     
-    fileprivate(set) var objects: [AnyHashable: Any]
+    private(set) var objects: [AnyHashable: Any]
     
     // MARK: - Koting / Dekoting
     
-    func dekotObject<T>(forKey key: AnyHashable) -> T? {
+    public func dekotObject<T>(forKey key: AnyHashable) -> T? {
         return objects[key] as? T
     }
     
-    func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
+    public func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
         guard let data = objects[key] as? Data,
             let codingObject = T.de_from(data: data) else {
                 
@@ -46,14 +46,14 @@ public class Koter {
         return codingObject
     }
     
-    func dekotObject<T: Koting>(forKey key: AnyHashable) -> [T]? {
+    public func dekotObject<T: Koting>(forKey key: AnyHashable) -> [T]? {
         guard let datas = objects[key] as? [Data] else {
             return nil
         }
         return datas.flatMap { T.de_from(data: $0) }
     }
     
-    func enkotObject<T: Koting>(_ object: T?, forKey key: AnyHashable) {
+    public func enkotObject<T: Koting>(_ object: T?, forKey key: AnyHashable) {
         guard let object = object, let data = object.de_data else {
             objects[key] = NSNull()
             return
@@ -61,7 +61,7 @@ public class Koter {
         objects[key] = data
     }
     
-    func enkotObject<T: Koting>(_ object: [T]?, forKey key: AnyHashable) {
+    public func enkotObject<T: Koting>(_ object: [T]?, forKey key: AnyHashable) {
         guard let object = object else {
             objects[key] = NSNull()
             return
@@ -69,7 +69,7 @@ public class Koter {
         objects[key] = object.flatMap { $0.de_data }
     }
     
-    func enkotObject<T>(_ object: T?, forKey key: AnyHashable) {
+    public func enkotObject<T>(_ object: T?, forKey key: AnyHashable) {
         guard let object = object else {
             objects[key] = NSNull()
             return
