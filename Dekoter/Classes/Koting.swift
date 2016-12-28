@@ -27,8 +27,8 @@ import Foundation
 
 public protocol Koting {
     
-    var data: Data? { get }
-    static func from(data: Data) -> Self?
+    var de_data: Data? { get }
+    static func de_from(data: Data) -> Self?
     
     init?(koter: Koter)
     func encode(with koter: Koter)
@@ -36,13 +36,13 @@ public protocol Koting {
 
 public extension Koting {
    
-    var data: Data? {
+    var de_data: Data? {
         let koter = Koter()
         encode(with: koter)
         return NSKeyedArchiver.archivedData(withRootObject: koter.objects)
     }
     
-    static func from(data: Data) -> Self? {
+    static func de_from(data: Data) -> Self? {
         guard let topObject = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData),
             let objects = topObject as? [AnyHashable: Any] else {
                 

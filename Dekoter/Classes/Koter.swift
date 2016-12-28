@@ -39,7 +39,7 @@ public class Koter {
     
     func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
         guard let data = objects[key] as? Data,
-            let codingObject = T.from(data: data) else {
+            let codingObject = T.de_from(data: data) else {
                 
             return nil
         }
@@ -50,11 +50,11 @@ public class Koter {
         guard let datas = objects[key] as? [Data] else {
             return nil
         }
-        return datas.flatMap { T.from(data: $0) }
+        return datas.flatMap { T.de_from(data: $0) }
     }
     
     func enkotObject<T: Koting>(_ object: T?, forKey key: AnyHashable) {
-        guard let object = object, let data = object.data else {
+        guard let object = object, let data = object.de_data else {
             objects[key] = NSNull()
             return
         }
@@ -66,7 +66,7 @@ public class Koter {
             objects[key] = NSNull()
             return
         }
-        objects[key] = object.flatMap { $0.data }
+        objects[key] = object.flatMap { $0.de_data }
     }
     
     func enkotObject<T>(_ object: T?, forKey key: AnyHashable) {

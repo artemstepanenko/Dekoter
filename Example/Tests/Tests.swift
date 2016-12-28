@@ -32,7 +32,7 @@ class Tests: XCTestCase {
     func testBob_AfterDecoding_StaysBob() {
         let bob = Person(name: "Bob")
         
-        guard let data = bob.data, let againBob = Person.from(data: data) else {
+        guard let data = bob.de_data, let againBob = Person.de_from(data: data) else {
             XCTFail()
             return
         }
@@ -45,7 +45,7 @@ class Tests: XCTestCase {
     func testMissingAge_AfterDecoding_StaysMissing() {
         let bob = Person(name: "Bob", age: nil)
         
-        guard let data = bob.data, let againBob = Person.from(data: data) else {
+        guard let data = bob.de_data, let againBob = Person.de_from(data: data) else {
             XCTFail()
             return
         }
@@ -59,7 +59,7 @@ class Tests: XCTestCase {
         let liberland = Residence(country: "Liberland")
         let bob = Person(name: "Bob", residence: liberland)
         
-        guard let data = bob.data, let againBob = Person.from(data: data), let againLiberland = againBob.residence else {
+        guard let data = bob.de_data, let againBob = Person.de_from(data: data), let againLiberland = againBob.residence else {
             XCTFail()
             return
         }
@@ -72,7 +72,7 @@ class Tests: XCTestCase {
     func testTeamWithoutMembers_AfterDecoding_AlsoHasNoMembers() {
         let team = Team(members: [])
         
-        guard let data = team.data, let againTeam = Team.from(data: data) else {
+        guard let data = team.de_data, let againTeam = Team.de_from(data: data) else {
             XCTFail()
             return
         }
@@ -86,7 +86,7 @@ class Tests: XCTestCase {
         let jo = Person(name: "Jo")
         let team = Team(members: [bob, jo])
         
-        guard let data = team.data, let againTeam = Team.from(data: data) else {
+        guard let data = team.de_data, let againTeam = Team.de_from(data: data) else {
             XCTFail()
             return
         }
