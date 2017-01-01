@@ -28,10 +28,6 @@ import Foundation
 
 struct Residence {
     let country: String
-    
-    init(country: String) {
-        self.country = country
-    }
 }
 
 // MARK: - Koting
@@ -43,7 +39,7 @@ extension Residence: Koting {
         self.init(country: country)
     }
     
-    func encode(with koter: Koter) {
+    func enkot(with koter: Koter) {
         koter.enkotObject(country, forKey: "country")
     }
 }

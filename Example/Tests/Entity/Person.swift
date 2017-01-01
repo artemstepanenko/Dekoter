@@ -49,7 +49,7 @@ extension Person: Koting {
         self.init(name: name, age: age, residence: residence)
     }
     
-    func encode(with koter: Koter) {
+    func enkot(with koter: Koter) {
         koter.enkotObject(name, forKey: "name")
         koter.enkotObject(age, forKey: "age")
         koter.enkotObject(residence, forKey: "residence")

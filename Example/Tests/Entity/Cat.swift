@@ -1,8 +1,8 @@
 //
-//  Team.swift
+//  Cat.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 27/12/16.
+//  Created by Artem Stepanenko on 31/12/16.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,25 +23,49 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import Foundation
 @testable import Dekoter
 
-struct Team {
-    let members: [Person]
+struct Cat {
+    
+    enum Sex: Int {
+        case male
+        case female
+    }
+    
+    let name: String
+    let surname: String
+    let nationality: String
+    let sex: Sex
 }
 
 // MARK: - Koting
 
-extension Team: Koting {
+extension Cat: Koting {
+    
+    private struct Key {
+        static let name = "name"
+        static let surname = "surname"
+        static let nationality = "nationality"
+        static let sex = "sex"
+    }
     
     init?(koter: Koter) {
-        guard let members: [Person] = koter.dekotObject(forKey: "members") else {
+        guard let name: String = koter.dekotObject(forKey: Key.name),
+            let surname: String = koter.dekotObject(forKey: Key.surname),
+            let nationality: String = koter.dekotObject(forKey: Key.nationality),
+            let sexValue: Int = koter.dekotObject(forKey: Key.sex),
+            let sex = Sex(rawValue: sexValue) else {
+                
             return nil
         }
-        self.init(members: members)
+        self.init(name: name, surname: surname, nationality: nationality, sex: sex)
     }
     
     func enkot(with koter: Koter) {
-        koter.enkotObject(members, forKey: "members")
+        koter.enkotObject(name, forKey: Key.name)
+        koter.enkotObject(surname, forKey: Key.surname)
+        koter.enkotObject(nationality, forKey: Key.nationality)
+        koter.enkotObject(sex.rawValue, forKey: Key.sex)
     }
 }

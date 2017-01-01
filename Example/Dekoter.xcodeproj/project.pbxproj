@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		129F1D641E17357600F9157B /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F1D631E17357600F9157B /* Cat.swift */; };
+		129F1D661E17392700F9157B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F1D651E17392700F9157B /* Place.swift */; };
 		12AF8B8E1E12F5020033143A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B8A1E12F5020033143A /* Person.swift */; };
 		12AF8B8F1E12F5020033143A /* Residence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B8B1E12F5020033143A /* Residence.swift */; };
 		12AF8B901E12F5020033143A /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B8C1E12F5020033143A /* Team.swift */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		0F8C140615500799315BD6DD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		129F1D631E17357600F9157B /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		129F1D651E17392700F9157B /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		12AF8B8A1E12F5020033143A /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		12AF8B8B1E12F5020033143A /* Residence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Residence.swift; sourceTree = "<group>"; };
 		12AF8B8C1E12F5020033143A /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 				12AF8B8A1E12F5020033143A /* Person.swift */,
 				12AF8B8B1E12F5020033143A /* Residence.swift */,
 				12AF8B8C1E12F5020033143A /* Team.swift */,
+				129F1D631E17357600F9157B /* Cat.swift */,
+				129F1D651E17392700F9157B /* Place.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 			files = (
 				12AF8B8F1E12F5020033143A /* Residence.swift in Sources */,
 				12AF8B8E1E12F5020033143A /* Person.swift in Sources */,
+				129F1D641E17357600F9157B /* Cat.swift in Sources */,
+				129F1D661E17392700F9157B /* Place.swift in Sources */,
 				12AF8B901E12F5020033143A /* Team.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
