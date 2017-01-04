@@ -68,6 +68,69 @@ Let's compare it to `Koting`:
 
 Thus, not so much of differences except naming.
 
+To summarize:
+
+- add the `Koting` protocol to the class declaration;
+- implement `init?(koter:)` and func `enkot(with:)`;
+- done.
+
+Once you've done that, the compiler is happy, and you can convert objects of the struct to `Data` and back.
+
+    let puss = Cat(name: "Puss")
+    guard let data = puss.de_data else { return }
+    guard let againPuss = de_from(data: data) else { return }
+
+If we reach the last line we have a restored cat, it's similar to the initial cat. If we don't (one of the guards fired)... well, in this case we'll always reach it. // TODO: but for other struts...
+
+## One more example
+
+    struct Cat {
+
+        enum Sex: Int {
+            case male
+            case female
+        }
+
+        let name: String
+        let surname: String?
+        let sex: Sex
+        let nationality: String
+        let birthPlace: Place?
+
+        // MARK: - Koting
+
+        private struct Key {
+            static let name = "name"
+            static let surname = "surname"
+            static let sex = "sex"
+            static let nationality = "nationality"
+            static let birthPlace = "birthPlace"
+        }
+
+        init?(koter: Koter) {
+            guard let name: String = koter.dekotObject(forKey: Key.name),
+                let nationality: String = koter.dekotObject(forKey: Key.nationality),
+                let sexValue: Int = koter.dekotObject(forKey: Key.sex),
+                let sex = Sex(rawValue: sexValue) else {
+
+                return nil
+            }
+            let surname: String? = koter.dekotObject(forKey: Key.surname)
+            let birthPlace: Place? = koter.dekotObject(forKey: Key.birthPlace)
+            self.init(name: name, surname: surname, sex: sex, nationality: nationality, birthPlace: birthPlace)
+        }
+
+        func enkot(with koter: Koter) {
+            koter.enkotObject(name, forKey: Key.name)
+            koter.enkotObject(surname, forKey: Key.surname)
+            koter.enkotObject(sex.rawValue, forKey: Key.sex)
+            koter.enkotObject(nationality, forKey: Key.nationality)
+            koter.enkotObject(birthPlace, forKey: Key.birthPlace)
+        }
+    }
+
+
+
 ## Micromission
 
 The library is small but proud of its mission, though the latter is also not that big. It's willing to serve developers as good as `NSCoding` does. Developers shouldn't feel lost and disappointing without a convenient tool to convert their Swift structs to `Data` and back.

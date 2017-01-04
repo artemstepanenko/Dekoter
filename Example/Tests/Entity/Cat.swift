@@ -34,9 +34,10 @@ struct Cat {
     }
     
     let name: String
-    let surname: String
-    let nationality: String
+    let surname: String?
     let sex: Sex
+    let nationality: String
+    let birthPlace: Place?
 }
 
 // MARK: - Koting
@@ -46,26 +47,29 @@ extension Cat: Koting {
     private struct Key {
         static let name = "name"
         static let surname = "surname"
-        static let nationality = "nationality"
         static let sex = "sex"
+        static let nationality = "nationality"
+        static let birthPlace = "birthPlace"
     }
     
     init?(koter: Koter) {
         guard let name: String = koter.dekotObject(forKey: Key.name),
-            let surname: String = koter.dekotObject(forKey: Key.surname),
             let nationality: String = koter.dekotObject(forKey: Key.nationality),
             let sexValue: Int = koter.dekotObject(forKey: Key.sex),
             let sex = Sex(rawValue: sexValue) else {
                 
             return nil
         }
-        self.init(name: name, surname: surname, nationality: nationality, sex: sex)
+        let surname: String? = koter.dekotObject(forKey: Key.surname)
+        let birthPlace: Place? = koter.dekotObject(forKey: Key.birthPlace)
+        self.init(name: name, surname: surname, sex: sex, nationality: nationality, birthPlace: birthPlace)
     }
     
     func enkot(with koter: Koter) {
         koter.enkotObject(name, forKey: Key.name)
         koter.enkotObject(surname, forKey: Key.surname)
-        koter.enkotObject(nationality, forKey: Key.nationality)
         koter.enkotObject(sex.rawValue, forKey: Key.sex)
+        koter.enkotObject(nationality, forKey: Key.nationality)
+        koter.enkotObject(birthPlace, forKey: Key.birthPlace)
     }
 }
