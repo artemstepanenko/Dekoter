@@ -74,9 +74,9 @@ Thus, not much different besides naming.
 
 To summarize:
 
-- add the `Koting` protocol to the class declaration;
-- implement `init?(koter:)` and func `enkot(with:)`;
-- done!
+- Add the `Koting` protocol to the class declaration.
+- Implement `init?(koter:)` and func `enkot(with:)`.
+- Done!
 
 Once it's done, the compiler is happy, and you can convert objects to `Data` and back.
 
@@ -139,15 +139,15 @@ struct Cat {
 
 So what we learn from it:
 
-**It's okay to have optional properties**
+- *It's okay to have optional properties.*
 
 As you can see, there're two optional properties. To encode them you don't do anything special, `enkotObject(_, forKey:)` takes optional as the first argument. For decoding you use `dekotObject(forKey:)` which also returns optional and it's up to you how whether you unwrap it or not.
 
-**`Koter` supports the same parameter types as `NSCoding` and additionally types which implement `Koting`**
+- *`Koter` supports the same parameter types as `NSCoding` and additionally types which implement `Koting`.*
 
 In the example above `Cat` has an optional `birthPlace` property of a type `Place`.
 
-**There's only one method for encoding and one – for decoding**
+- *There's only one method for encoding and one – for decoding.*
 
 Regardless the type, you use the same methods: `enkotObject(_, forKey:)` for encoding and `dekotObject(forKey:)` for decoding. These methods are generic, they derive a type based on the expected return value, that's why you should always explicitly specify it.
 
@@ -164,15 +164,15 @@ You might have noticed a few cats here and there. "Kot" in some slavic languages
 Dear friends, your help is more than welcome!
 There're multiple ways to support the project.
 
-**Create an issue**
+- *Create an issue.*
 
 if you find a problem, or you know how to improve, or you have a question.
 
-**Create a pull request**
+- *Create a pull request.*
 
 if you develop something important (previously filed as an issue).
 
-**Send me an email**
+- *Send me an email.*
 
 if you want to share your either positive or negative experience using the library and have a hard time expressing it in a form of issue. Or, maybe, you don't want to make it publicly available.
 
