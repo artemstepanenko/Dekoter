@@ -1,12 +1,5 @@
 # Dekoter
 
-[![CI Status](http://img.shields.io/travis/artemstepanenko/Dekoter.svg?style=flat)](https://travis-ci.org/artemstepanenko/Dekoter)
-[![Version](https://img.shields.io/cocoapods/v/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
-[![License](https://img.shields.io/cocoapods/l/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
-[![Platform](https://img.shields.io/cocoapods/p/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
-
-TODO: here should be a very nice picture with cats
-
 ## Why you might be interested
 
 Fills a gap left by the missing `NSCoding`'s support for Swift structs.
