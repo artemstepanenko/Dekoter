@@ -3,7 +3,7 @@
 - [Why You Might Be Interested](#why-you-might-be-interested)
 - [How Much Familiar It Feels](#how-much-familiar-it-feels)
 - [One More Example](#one-more-example)
- - [What We've Learned from It](#what-we-ve-learned-from-it)
+ - [What We've Learned from It](#what-weve-learned-from-it)
 - [Micromission](#micromission)
 - [Why Dekoter?](#why-dekoter)
 - [Collaboration](#collaboration)
