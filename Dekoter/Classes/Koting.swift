@@ -31,14 +31,14 @@ public protocol Koting {
     static func de_from(data: Data) -> Self?
     
     init?(koter: Koter)
-    func encode(with koter: Koter)
+    func enkot(with koter: Koter)
 }
 
 public extension Koting {
    
     var de_data: Data? {
         let koter = Koter()
-        encode(with: koter)
+        enkot(with: koter)
         return NSKeyedArchiver.archivedData(withRootObject: koter.objects)
     }
     

@@ -1,8 +1,8 @@
 //
-//  Residence.swift
+//  Place.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 27/12/16.
+//  Created by Artem Stepanenko on 31/12/16.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,24 +26,32 @@
 import Foundation
 @testable import Dekoter
 
-struct Residence {
-    let country: String
+struct Place {
     
-    init(country: String) {
-        self.country = country
-    }
+    let country: String
+    let state: String
 }
 
 // MARK: - Koting
 
-extension Residence: Koting {
+extension Place: Koting {
     
-    init?(koter: Koter) {
-        let country: String = koter.dekotObject(forKey: "country")!
-        self.init(country: country)
+    fileprivate struct Key {
+        static let country = "country"
+        static let state = "state"
     }
     
-    func encode(with koter: Koter) {
-        koter.enkotObject(country, forKey: "country")
+    init?(koter: Koter) {
+        guard let country: String = koter.dekotObject(forKey: Key.country),
+            let state: String = koter.dekotObject(forKey: Key.state) else {
+                
+            return nil
+        }
+        self.init(country: country, state: state)
+    }
+    
+    func enkot(with koter: Koter) {
+        koter.enkotObject(country, forKey: Key.country)
+        koter.enkotObject(state, forKey: Key.state)
     }
 }

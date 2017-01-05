@@ -29,70 +29,43 @@ import Dekoter
 
 class Tests: XCTestCase {
     
-    func testBob_AfterDecoding_StaysBob() {
-        let bob = Person(name: "Bob")
+    func testMissingSurname_AfterDecoding_StaysMissing() {
+        let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "UKR", birthPlace: nil)
         
-        guard let data = bob.de_data, let againBob = Person.de_from(data: data) else {
+        guard let data = murzik.de_data, let againMurzik = Cat.de_from(data: data) else {
             XCTFail()
             return
         }
         
-        let expected = "Bob"
-        let actual = againBob.name
+        XCTAssertNil(againMurzik.surname)
+    }
+    
+    func testPuff_AfterDecoding_StaysPuff() {
+        let puff = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
+        
+        guard let data = puff.de_data, let againPuff = Cat.de_from(data: data) else {
+            XCTFail()
+            return
+        }
+        
+        let expected = "Puff"
+        let actual = againPuff.name
         XCTAssertEqual(expected, actual)
     }
     
-    func testMissingAge_AfterDecoding_StaysMissing() {
-        let bob = Person(name: "Bob", age: nil)
+    func testBirthPlace_AfterDecoding_StaysSame() {
+        let kharkiv = Place(country: "Ukraine", state: "Kharkiv")
+        let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "UKR", birthPlace: kharkiv)
         
-        guard let data = bob.de_data, let againBob = Person.de_from(data: data) else {
+        guard let data = murzik.de_data, let againMurzik = Cat.de_from(data: data),
+            let againKharkiv = againMurzik.birthPlace else {
+            
             XCTFail()
             return
         }
         
-        let expected: Int? = nil
-        let actual = againBob.age
-        XCTAssertEqual(expected, actual)
-    }
-    
-    func testResidence_AfterDecoding_StaysSame() {
-        let liberland = Residence(country: "Liberland")
-        let bob = Person(name: "Bob", residence: liberland)
-        
-        guard let data = bob.de_data, let againBob = Person.de_from(data: data), let againLiberland = againBob.residence else {
-            XCTFail()
-            return
-        }
-        
-        let expected = "Liberland"
-        let actual = againLiberland.country
-        XCTAssertEqual(expected, actual)
-    }
-    
-    func testTeamWithoutMembers_AfterDecoding_AlsoHasNoMembers() {
-        let team = Team(members: [])
-        
-        guard let data = team.de_data, let againTeam = Team.de_from(data: data) else {
-            XCTFail()
-            return
-        }
-        let expected: [String] = []
-        let actual = againTeam.members.map { $0.name }
-        XCTAssertEqual(expected, actual)
-    }
-    
-    func testTeamWithBobAndJo_AfterDecoding_AlsoHasBobAndJo() {
-        let bob = Person(name: "Bob")
-        let jo = Person(name: "Jo")
-        let team = Team(members: [bob, jo])
-        
-        guard let data = team.de_data, let againTeam = Team.de_from(data: data) else {
-            XCTFail()
-            return
-        }
-        
-        let expected = [ "Bob", "Jo" ]
-        let actual = againTeam.members.map { $0.name }
+        let expected = "Kharkiv"
+        let actual = againKharkiv.state
         XCTAssertEqual(expected, actual)
     }
 }
