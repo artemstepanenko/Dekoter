@@ -5,7 +5,7 @@
 - [One More Example](#one-more-example)
  - [What We've Learned from It](#what-weve-learned-from-it)
 - [Micromission](#micromission)
-- [Why Dekoter?](#why-dekoter)
+- [Why Dekoter](#why-dekoter)
 - [Collaboration](#collaboration)
 - [License](#license)
 
@@ -157,7 +157,7 @@ Regardless the type, you use the same methods: `enkotObject(_, forKey:)` for enc
 
 The library is small but proud of its mission, though the latter is also not that big. It's willing to serve developers as good as `NSCoding` does. Developers shouldn't feel lost and disappointed without a convenient tool to convert their Swift structs to `Data` and back.
 
-## Why Dekoter?
+## Why Dekoter
 
 You might have noticed a few cats here and there. "Kot" in some slavic languages means "cat" and sounds similar to "code".
 
