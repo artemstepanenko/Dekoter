@@ -1,5 +1,7 @@
 # Dekoter
 
+[![Build Status](https://travis-ci.org/artemstepanenko/Dekoter.svg?branch=master)](https://travis-ci.org/artemstepanenko/Dekoter)
+
 - [Why You Might Be Interested](#why-you-might-be-interested)
 - [How Much Familiar It Feels](#how-much-familiar-it-feels)
 - [One More Example](#one-more-example)
