@@ -1,11 +1,20 @@
 # Dekoter
 
-## Why you might be interested
+- [Why You Might Be Interested](#why-you-might-be-interested)
+- [How Much Familiar It Feels](#how-much-familiar-it-feels)
+- [One More Example](#one-more-example)
+ - [What We've Learned from It](#what-we-ve-learned-from-it)
+- [Micromission](#micromission)
+- [Why Dekoter?](#why-dekoter)
+- [Collaboration](#collaboration)
+- [License](#license)
+
+## Why You Might Be Interested
 
 Fills a gap left by the missing `NSCoding`'s support for Swift structs.
 If you've ever implemented `NSCoding`, `Koting` will be familiar to you as well.
 
-## How much familiar it feels
+## How Much Familiar It Feels
 
 A quick reminder how to implement `NSCoding`:
 
@@ -79,7 +88,7 @@ guard let data = puss.de_data else { return }
 guard let againPuss = de_from(data: data) else { return }
 ```
 
-## One more example
+## One More Example
 
 This one is going to depict most of the Dekoter's features.
 
@@ -130,7 +139,7 @@ struct Cat {
 }
 ```
 
-So what we learn from it:
+### What We've Learned from It
 
 - *It's okay to have optional properties.*
 
