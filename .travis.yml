@@ -12,4 +12,6 @@ before_install:
 script:
 - set -o pipefail
 - xcodebuild -version
-- xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+- xcodebuild -showsdks
+- xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build | xcpretty
+- xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty
