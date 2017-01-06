@@ -1,17 +1,5 @@
 language: objective-c
 osx_image: xcode8
 
-env:
-  global:
-  - WORKSPACE=Example/Dekoter.xcworkspace
-  - SCHEME=Dekoter-Example
-
-before_install:
-- gem install xcpretty
-
 script:
-- set -o pipefail
-- xcodebuild -version
-- xcodebuild -showsdks
-- xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build | xcpretty
-- xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty
+- xcodebuild test -workspace Example/Dekoter.xcworkspace -scheme Dekoter-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
