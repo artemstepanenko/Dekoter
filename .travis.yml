@@ -1,4 +1,5 @@
 language: objective-c
+osx_image: "xcode8"
 
 script:
-- set -o pipefail && xctool -workspace Example/Dekoter.xcworkspace -scheme Dekoter-Example -sdk iphonesimulator9.3 run-tests
+- xcodebuild test -workspace Example/Dekoter.xcworkspace -scheme Dekoter-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
