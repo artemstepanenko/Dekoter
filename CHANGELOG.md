@@ -13,3 +13,4 @@
 * Basic Travis setup is done
 * Podspec is prepared to be pushed
 * Cocoapods' statuses are added to the readme
+* Xcode documentation is added
