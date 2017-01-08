@@ -25,6 +25,8 @@
 
 import Foundation
 
+
+/// Collects a content of an object to be converted to Data and back – from Data to the initial type.
 public class Koter {
     
     // MARK: - Property
@@ -33,10 +35,18 @@ public class Koter {
     
     // MARK: - Koting / Dekoting
     
+    /// Decodes and returns an object that was previously encoded and associated with the string key.
+    ///
+    /// - Parameter key: the string key
+    /// - Returns: the object that was previously encoded
     public func dekotObject<T>(forKey key: AnyHashable) -> T? {
         return objects[key] as? T
     }
     
+    /// Decodes and returns an object which implements Koting that was previously encoded and associated with the string key.
+    ///
+    /// - Parameter key: the string key
+    /// - Returns: the object which implements Koting that was previously encoded
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
         guard let data = objects[key] as? Data,
             let codingObject = T.de_from(data: data) else {
@@ -46,6 +56,10 @@ public class Koter {
         return codingObject
     }
     
+    /// Decodes and returns an array of objects which implement Koting that was previously encoded and associated with the string key.
+    ///
+    /// - Parameter key: the string key
+    /// - Returns: the array of objects which implement Koting that was previously encoded
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> [T]? {
         guard let datas = objects[key] as? [Data] else {
             return nil
@@ -53,6 +67,11 @@ public class Koter {
         return datas.flatMap { T.de_from(data: $0) }
     }
     
+    /// Encodes an object which implements Koting and associates it with the string key.
+    ///
+    /// - Parameters:
+    ///   - object: the object which implements Koting
+    ///   - key: the string key
     public func enkotObject<T: Koting>(_ object: T?, forKey key: AnyHashable) {
         guard let object = object, let data = object.de_data else {
             objects[key] = NSNull()
@@ -61,6 +80,11 @@ public class Koter {
         objects[key] = data
     }
     
+    /// Encodes an array of objects which implement Koting and associates it with the string key.
+    ///
+    /// - Parameters:
+    ///   - object: the array of objects which implement Koting
+    ///   - key: the string key
     public func enkotObject<T: Koting>(_ object: [T]?, forKey key: AnyHashable) {
         guard let object = object else {
             objects[key] = NSNull()
@@ -69,6 +93,12 @@ public class Koter {
         objects[key] = object.flatMap { $0.de_data }
     }
     
+    
+    /// Encodes an object and associates it with the string key.
+    ///
+    /// - Parameters:
+    ///   - object: the object
+    ///   - key: the string key
     public func enkotObject<T>(_ object: T?, forKey key: AnyHashable) {
         guard let object = object else {
             objects[key] = NSNull()
