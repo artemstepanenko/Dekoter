@@ -1,6 +1,9 @@
 # Dekoter
 
 [![Build Status](https://travis-ci.org/artemstepanenko/Dekoter.svg?branch=master)](https://travis-ci.org/artemstepanenko/Dekoter)
+[![Version](https://img.shields.io/cocoapods/v/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
+[![License](https://img.shields.io/cocoapods/l/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
+[![Platform](https://img.shields.io/cocoapods/p/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
 
 - [Why You Might Be Interested](#why-you-might-be-interested)
 - [How Much Familiar It Feels](#how-much-familiar-it-feels)
