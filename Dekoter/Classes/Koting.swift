@@ -25,10 +25,14 @@
 
 import Foundation
 
+
+/// Declares four methods. Two of them are already implemented, they may be used to encode/decode objects of the type (struct or class) to/from a data. Remaining two methods must be implemented.
 public protocol Koting {
     
     var de_data: Data? { get }
     static func de_from(data: Data) -> Self?
+    
+    // MARK: - To Be Overriden
     
     init?(koter: Koter)
     func enkot(with koter: Koter)
@@ -36,12 +40,18 @@ public protocol Koting {
 
 public extension Koting {
    
+    /// Tries to encode an object to a data. (Returns nil, if the object contains a property of an unsupported type.)
     var de_data: Data? {
         let koter = Koter()
         enkot(with: koter)
         return NSKeyedArchiver.archivedData(withRootObject: koter.objects)
     }
     
+    
+    /// Tries to decode a data to an object.
+    ///
+    /// - Parameter data: the data that an object of the given type was previously encoded to
+    /// - Returns: the object similar to the one that was previously encoded to the provided data. Returns nil, if the data was created differently.
     static func de_from(data: Data) -> Self? {
         guard let topObject = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData),
             let objects = topObject as? [AnyHashable: Any] else {
