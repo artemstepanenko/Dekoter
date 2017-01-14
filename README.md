@@ -92,7 +92,7 @@ Once it's done, the compiler is happy, and you can convert objects to `Data` and
 ```swift
 let puss = Cat(name: "Puss")
 guard let data = puss.de_data else { return }
-guard let againPuss = de_from(data: data) else { return }
+guard let againPuss = Cat.de_from(data: data) else { return }
 ```
 
 ## One More Example
