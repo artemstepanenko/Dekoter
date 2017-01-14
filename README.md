@@ -1,6 +1,6 @@
-![](https://github.com/artemstepanenko/Dekoter/blob/as/temp_cat/temp_cat.png)
-
 # Dekoter
+
+![](https://github.com/artemstepanenko/Dekoter/blob/as/temp_cat/temp_cat.png)
 
 [![Build Status](https://travis-ci.org/artemstepanenko/Dekoter.svg?branch=master)](https://travis-ci.org/artemstepanenko/Dekoter)
 [![Version](https://img.shields.io/cocoapods/v/Dekoter.svg?style=flat)](http://cocoapods.org/pods/Dekoter)
