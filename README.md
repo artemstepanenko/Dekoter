@@ -1,3 +1,5 @@
+![](https://github.com/artemstepanenko/Dekoter/blob/as/temp_cat/temp_cat.png)
+
 # Dekoter
 
 [![Build Status](https://travis-ci.org/artemstepanenko/Dekoter.svg?branch=master)](https://travis-ci.org/artemstepanenko/Dekoter)
