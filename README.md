@@ -172,9 +172,13 @@ You might have noticed a few cats here and there. There's a reason.
 "Kot" in some slavic languages means "cat", and it sounds similar to "code".
 
 "enkot" -> "encode"
+
 "dekot" -> "decode"
+
 "koter" -> "coder"
+
 "koting" -> "coding"
+
 "dekoter" -> "decoder"
 
 ## Collaboration
