@@ -1,6 +1,6 @@
 _This is pretty much how it works:_
 
-![](https://github.com/artemstepanenko/Dekoter/blob/develop/cat.png)
+![](https://github.com/artemstepanenko/Dekoter/blob/master/cat.png)
 
 # Dekoter
 
