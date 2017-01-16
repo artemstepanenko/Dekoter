@@ -1,4 +1,4 @@
-![](https://github.com/artemstepanenko/Dekoter/blob/master/temp_cat.png)
+![](https://github.com/artemstepanenko/Dekoter/blob/master/cat.png)
 
 # Dekoter
 
