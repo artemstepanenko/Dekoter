@@ -1,3 +1,5 @@
+_This is pretty much how it works:_
+
 ![](https://github.com/artemstepanenko/Dekoter/blob/as/final_cat/cat.png)
 
 # Dekoter
