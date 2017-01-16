@@ -168,7 +168,14 @@ The library is small but proud of its mission, though the latter is also not tha
 
 ## Why Dekoter
 
-You might have noticed a few cats here and there. "Kot" in some slavic languages means "cat" and sounds similar to "code".
+You might have noticed a few cats here and there. There's a reason.
+"Kot" in some slavic languages means "cat", and it sounds similar to "code".
+
+"enkot" -> "encode"
+"dekot" -> "decode"
+"koter" -> "coder"
+"koting" -> "coding"
+"dekoter" -> "decoder"
 
 ## Collaboration
 
