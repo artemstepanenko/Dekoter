@@ -25,11 +25,9 @@
 
 import Foundation
 
-// MARK: - Dekoter
-
 public extension UserDefaults {
     
-    public func set(kotable value: Koting?, forKey defaultName: String) {
+    public func de_set(_ value: Koting?, forKey defaultName: String) {
         guard let value = value,
             let data = value.de_data else {
             
@@ -38,7 +36,8 @@ public extension UserDefaults {
         set(data, forKey: defaultName)
     }
     
-    public func kotable<T: Koting>(forKey defaultName: String) -> T? {
+    
+    public func de_object<T: Koting>(forKey defaultName: String) -> T? {
         guard let data = object(forKey: defaultName) as? Data else {
             return nil
         }

@@ -11,13 +11,13 @@ import Dekoter
 
 class UserDefaultTests: XCTestCase {
     
-    func testThat() {
+    func testMurzik_AfterExtractingFromUserDefaults_StaysMurzik() {
         let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "GER", birthPlace: nil)
         let userDefaults = UserDefaults()
         
-        userDefaults.set(kotable: murzik, forKey: "cat")
+        userDefaults.de_set(murzik, forKey: "cat")
         
-        guard let againMurzik: Cat = userDefaults.kotable(forKey: "cat") else {
+        guard let againMurzik: Cat = userDefaults.de_object(forKey: "cat") else {
             XCTFail()
             return
         }
