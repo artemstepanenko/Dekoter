@@ -2,6 +2,8 @@
 
 ---
 
+## 0.1.1
+
 ### Features
 
 * Handy UserDefauls extension
