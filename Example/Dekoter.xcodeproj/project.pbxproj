@@ -10,6 +10,8 @@
 		12513C401E2D825D000C896C /* UserDefaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12513C3F1E2D825D000C896C /* UserDefaultTests.swift */; };
 		129F1D641E17357600F9157B /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F1D631E17357600F9157B /* Cat.swift */; };
 		129F1D661E17392700F9157B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F1D651E17392700F9157B /* Place.swift */; };
+		12E552331E3430B40084AEFA /* PlaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E552321E3430B40084AEFA /* PlaceTests.swift */; };
+		12E552351E3431150084AEFA /* CatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E552341E3431150084AEFA /* CatTests.swift */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		75DC2CE5FEC2A4964C22B1D7 /* Pods_Dekoter_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5633F5AC230CADC207EE8392 /* Pods_Dekoter_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -19,6 +21,8 @@
 		12513C3F1E2D825D000C896C /* UserDefaultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultTests.swift; sourceTree = "<group>"; };
 		129F1D631E17357600F9157B /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		129F1D651E17392700F9157B /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		12E552321E3430B40084AEFA /* PlaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTests.swift; sourceTree = "<group>"; };
+		12E552341E3431150084AEFA /* CatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatTests.swift; sourceTree = "<group>"; };
 		16EBEABC8999A357B76855E5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5633F5AC230CADC207EE8392 /* Pods_Dekoter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dekoter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* Dekoter_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dekoter_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,8 @@
 				12AF8B891E12F5020033143A /* Entity */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				12513C3F1E2D825D000C896C /* UserDefaultTests.swift */,
+				12E552321E3430B40084AEFA /* PlaceTests.swift */,
+				12E552341E3431150084AEFA /* CatTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -237,8 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				12513C401E2D825D000C896C /* UserDefaultTests.swift in Sources */,
+				12E552331E3430B40084AEFA /* PlaceTests.swift in Sources */,
 				129F1D641E17357600F9157B /* Cat.swift in Sources */,
 				129F1D661E17392700F9157B /* Place.swift in Sources */,
+				12E552351E3431150084AEFA /* CatTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

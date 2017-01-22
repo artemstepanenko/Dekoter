@@ -40,6 +40,18 @@ struct Cat {
     let birthPlace: Place?
 }
 
+// MARK: - Equatable
+
+extension Cat: Equatable {}
+
+func ==(lhs: Cat, rhs: Cat) -> Bool {
+    return lhs.name == rhs.name &&
+        lhs.surname == rhs.surname &&
+        lhs.sex == rhs.sex &&
+        lhs.nationality == rhs.nationality &&
+        lhs.birthPlace == rhs.birthPlace
+}
+
 // MARK: - Koting
 
 extension Cat: Koting {

@@ -1,8 +1,8 @@
 //
-//  Place.swift
+//  CatTests.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 31/12/16.
+//  Created by Artem Stepanenko on 22/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,44 +23,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-@testable import Dekoter
+import XCTest
 
-struct Place {
+class CatTests: XCTestCase {
     
-    let country: String
-    let state: String
-}
-
-// MARK: - Equatable
-
-extension Place: Equatable {}
-
-func ==(lhs: Place, rhs: Place) -> Bool {
-    return lhs.country == rhs.country &&
-        lhs.state == rhs.state
-}
-
-// MARK: - Koting
-
-extension Place: Koting {
-    
-    fileprivate struct Key {
-        static let country = "country"
-        static let state = "state"
-    }
-    
-    init?(koter: Koter) {
-        guard let country: String = koter.dekotObject(forKey: Key.country),
-            let state: String = koter.dekotObject(forKey: Key.state) else {
-                
-            return nil
-        }
-        self.init(country: country, state: state)
-    }
-    
-    func enkot(with koter: Koter) {
-        koter.enkotObject(country, forKey: Key.country)
-        koter.enkotObject(state, forKey: Key.state)
-    }
+    // TODO: test that two similar cats are equal
+    // TODO: test that two different cats are not equal
 }

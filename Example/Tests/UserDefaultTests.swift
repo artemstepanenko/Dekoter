@@ -50,10 +50,31 @@ class UserDefaultTests: XCTestCase {
             XCTFail()
             return
         }
-        let actual = againMurzik.name
-        let expected = "Murzik"
         
-        XCTAssertEqual(actual, expected)
+        // name
+        let actualName = againMurzik.name
+        let expectedName = "Murzik"
+        XCTAssertEqual(actualName, expectedName)
+        
+        // surname
+        let actualSurname = againMurzik.surname
+        let expectedSurname: String? = nil
+        XCTAssertEqual(actualSurname, expectedSurname)
+        
+        // sex
+        let actualSex = againMurzik.sex
+        let expectedSex = Cat.Sex.male
+        XCTAssertEqual(actualSex, expectedSex)
+        
+        // nationality
+        let actualNationality = againMurzik.nationality
+        let expectedNationality = "GER"
+        XCTAssertEqual(actualNationality, expectedNationality)
+        
+        // birth place
+        let actualBirthPlace = againMurzik.birthPlace
+        let expectedBirthPlace: Place? = nil
+        XCTAssertEqual(actualBirthPlace, expectedBirthPlace)
     }
 }
 
