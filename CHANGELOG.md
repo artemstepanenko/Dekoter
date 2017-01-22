@@ -2,6 +2,11 @@
 
 ---
 
+### Features
+
+* Handy UserDefauls extension
+* More unit tests
+
 ## 0.1.0
 
 ### Features

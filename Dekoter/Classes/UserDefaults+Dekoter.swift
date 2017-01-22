@@ -1,8 +1,8 @@
 //
-//  Place.swift
+//  UserDefaults+Dekoter.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 31/12/16.
+//  Created by Artem Stepanenko on 16/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,43 +24,23 @@
 //  THE SOFTWARE.
 
 import Foundation
-@testable import Dekoter
 
-struct Place {
+public extension UserDefaults {
     
-    let country: String
-    let city: String
-}
-
-// MARK: - Equatable
-
-extension Place: Equatable {}
-
-func ==(lhs: Place, rhs: Place) -> Bool {
-    return lhs.country == rhs.country &&
-        lhs.city == rhs.city
-}
-
-// MARK: - Koting
-
-extension Place: Koting {
-    
-    fileprivate struct Key {
-        static let country = "country"
-        static let city = "city"
+    public func de_set(_ value: Koting?, forKey defaultName: String) {
+        guard let value = value,
+            let data = value.de_data else {
+            
+            return
+        }
+        set(data, forKey: defaultName)
     }
     
-    init?(koter: Koter) {
-        guard let country: String = koter.dekotObject(forKey: Key.country),
-            let city: String = koter.dekotObject(forKey: Key.city) else {
-                
+    
+    public func de_object<T: Koting>(forKey defaultName: String) -> T? {
+        guard let data = object(forKey: defaultName) as? Data else {
             return nil
         }
-        self.init(country: country, city: city)
-    }
-    
-    func enkot(with koter: Koter) {
-        koter.enkotObject(country, forKey: Key.country)
-        koter.enkotObject(city, forKey: Key.city)
+        return T.de_from(data: data)
     }
 }

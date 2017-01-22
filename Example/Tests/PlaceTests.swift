@@ -1,8 +1,8 @@
 //
-//  Place.swift
+//  PlaceTests.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 31/12/16.
+//  Created by Artem Stepanenko on 22/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,44 +23,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-@testable import Dekoter
+import XCTest
 
-struct Place {
+class PlaceTests: XCTestCase {
     
-    let country: String
-    let city: String
-}
-
-// MARK: - Equatable
-
-extension Place: Equatable {}
-
-func ==(lhs: Place, rhs: Place) -> Bool {
-    return lhs.country == rhs.country &&
-        lhs.city == rhs.city
-}
-
-// MARK: - Koting
-
-extension Place: Koting {
-    
-    fileprivate struct Key {
-        static let country = "country"
-        static let city = "city"
+    func test_TwoMissingPlaces_AreEqual() {
+        let firstMissingPlace: Place? = nil
+        let secondMissingPlace: Place? = nil
+        XCTAssertEqual(firstMissingPlace, secondMissingPlace)
     }
     
-    init?(koter: Koter) {
-        guard let country: String = koter.dekotObject(forKey: Key.country),
-            let city: String = koter.dekotObject(forKey: Key.city) else {
-                
-            return nil
-        }
-        self.init(country: country, city: city)
+    func test_MissingPlaceAndNot_AreNotEqual() {
+        let missingPlace: Place? = nil
+        let paris: Place? = Place(country: "France", city: "Paris")
+        XCTAssertNotEqual(missingPlace, paris)
+    }
+
+    func test_TwoDifferentPlaces_AreNotEqual() {
+        let palermo: Place = Place(country: "Italy", city: "Palermo")
+        let porto: Place = Place(country: "Portugal", city: "Porto")
+        XCTAssertNotEqual(palermo, porto)
     }
     
-    func enkot(with koter: Koter) {
-        koter.enkotObject(country, forKey: Key.country)
-        koter.enkotObject(city, forKey: Key.city)
+    func test_TwoSimilarPlaces_AreEqual() {
+        let kharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
+        let againKharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
+        XCTAssertEqual(kharkiv, againKharkiv)
     }
 }
