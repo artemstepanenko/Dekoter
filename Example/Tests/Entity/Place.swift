@@ -29,7 +29,7 @@ import Foundation
 struct Place {
     
     let country: String
-    let state: String
+    let city: String
 }
 
 // MARK: - Equatable
@@ -38,7 +38,7 @@ extension Place: Equatable {}
 
 func ==(lhs: Place, rhs: Place) -> Bool {
     return lhs.country == rhs.country &&
-        lhs.state == rhs.state
+        lhs.city == rhs.city
 }
 
 // MARK: - Koting
@@ -47,20 +47,20 @@ extension Place: Koting {
     
     fileprivate struct Key {
         static let country = "country"
-        static let state = "state"
+        static let city = "city"
     }
     
     init?(koter: Koter) {
         guard let country: String = koter.dekotObject(forKey: Key.country),
-            let state: String = koter.dekotObject(forKey: Key.state) else {
+            let city: String = koter.dekotObject(forKey: Key.city) else {
                 
             return nil
         }
-        self.init(country: country, state: state)
+        self.init(country: country, city: city)
     }
     
     func enkot(with koter: Koter) {
         koter.enkotObject(country, forKey: Key.country)
-        koter.enkotObject(state, forKey: Key.state)
+        koter.enkotObject(city, forKey: Key.city)
     }
 }

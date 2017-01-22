@@ -26,9 +26,9 @@
 import XCTest
 import Dekoter
 
+// TODO: find a better way to test this
 class UserDefaultTests: XCTestCase {
     
-    // TODO: find a better way to test this
     let userDefaults = UserDefaults.standard
     
     override func tearDown() {

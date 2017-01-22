@@ -27,7 +27,27 @@ import XCTest
 
 class PlaceTests: XCTestCase {
     
-    // TODO: test that two similar places are equal
-    // TODO: test that two different places are not equal
+    func test_TwoMissingPlaces_AreEqual() {
+        let firstMissingPlace: Place? = nil
+        let secondMissingPlace: Place? = nil
+        XCTAssertEqual(firstMissingPlace, secondMissingPlace)
+    }
+    
+    func test_MissingPlaceAndNot_AreNotEqual() {
+        let missingPlace: Place? = nil
+        let paris: Place? = Place(country: "France", city: "Paris")
+        XCTAssertNotEqual(missingPlace, paris)
+    }
 
+    func test_TwoDifferentPlaces_AreNotEqual() {
+        let palermo: Place = Place(country: "Italy", city: "Palermo")
+        let porto: Place = Place(country: "Portugal", city: "Porto")
+        XCTAssertNotEqual(palermo, porto)
+    }
+    
+    func test_TwoSimilarPlaces_AreEqual() {
+        let kharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
+        let againKharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
+        XCTAssertEqual(kharkiv, againKharkiv)
+    }
 }

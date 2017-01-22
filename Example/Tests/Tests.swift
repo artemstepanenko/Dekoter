@@ -54,7 +54,7 @@ class Tests: XCTestCase {
     }
     
     func testBirthPlace_AfterDecoding_StaysSame() {
-        let kharkiv = Place(country: "Ukraine", state: "Kharkiv")
+        let kharkiv = Place(country: "Ukraine", city: "Kharkiv")
         let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "UKR", birthPlace: kharkiv)
         
         guard let data = murzik.de_data, let againMurzik = Cat.de_from(data: data),
@@ -65,7 +65,7 @@ class Tests: XCTestCase {
         }
         
         let expected = "Kharkiv"
-        let actual = againKharkiv.state
+        let actual = againKharkiv.city
         XCTAssertEqual(expected, actual)
     }
 }

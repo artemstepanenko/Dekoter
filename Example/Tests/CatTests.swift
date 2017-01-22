@@ -27,6 +27,27 @@ import XCTest
 
 class CatTests: XCTestCase {
     
-    // TODO: test that two similar cats are equal
-    // TODO: test that two different cats are not equal
+    func test_TwoMissingCats_AreEqual() {
+        let firstMissingCat: Cat? = nil
+        let secondMissingCat: Cat? = nil
+        XCTAssertEqual(firstMissingCat, secondMissingCat)
+    }
+    
+    func test_MissingCatAndNot_AreNotEqual() {
+        let missingCat: Cat? = nil
+        let charlie: Cat? = Cat(name: "Charlie", surname: "Tompson", sex: .male, nationality: "US", birthPlace: nil)
+        XCTAssertNotEqual(missingCat, charlie)
+    }
+    
+    func test_TwoDifferentCats_AreNotEqual() {
+        let charlie: Cat = Cat(name: "Charlie", surname: "Tompson", sex: .male, nationality: "US", birthPlace: nil)
+        let sonya: Cat = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UKR", birthPlace: Place(country: "Ukraine", city: "Lviv"))
+        XCTAssertNotEqual(charlie, sonya)
+    }
+    
+    func test_TwoSimilarCats_AreEqual() {
+        let emma: Cat = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        let againEmma: Cat = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        XCTAssertEqual(emma, againEmma)
+    }
 }
