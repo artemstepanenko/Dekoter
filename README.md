@@ -13,6 +13,9 @@ _This is pretty much how it works:_
 - [How Much Familiar It Feels](#how-much-familiar-it-feels)
 - [One More Example](#one-more-example)
  - [What We've Learned from It](#what-weve-learned-from-it)
+- [Shortcuts](#shortcuts)
+ - [Save It to UserDefaults in One Line](#save-it-to-userdefaults-in-one-line)
+ - [Convert an Array to Data in One Line](#convert-an-array-to-data-in-one-line)
 - [Micromission](#micromission)
 - [Why Dekoter](#why-dekoter)
 - [Collaboration](#collaboration)
@@ -161,6 +164,20 @@ In the example above `Cat` has an optional `birthPlace` property of a type `Plac
 - *There's only one method for encoding and one – for decoding.*
 
 Regardless the type, you use the same methods: `enkotObject(_, forKey:)` for encoding and `dekotObject(forKey:)` for decoding. These methods are generic, they derive a type based on the expected return value, that's why you should always explicitly specify it.
+
+## Shortcuts
+
+### Save It to UserDefaults in One Line
+
+There are two methods implemented in a `UserDefaults` extension: `de_set(_, forKey:)` and `de_object(forKey:)`
+
+```swift
+let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "GER", birthPlace: nil)
+userDefaults.de_set(murzik, forKey: "cat")
+let againMurzik: Cat? = userDefaults.de_object(forKey: "cat")
+```
+
+### Convert an Array to Data in One Line
 
 ## Micromission
 

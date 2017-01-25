@@ -5,6 +5,7 @@
 ### Features
 
 * Array extension
+* Shortcuts section is added to the readme file
 
 ## 0.1.1
 
