@@ -2,6 +2,10 @@
 
 ---
 
+### Features
+
+* Array extension
+
 ## 0.1.1
 
 ### Features

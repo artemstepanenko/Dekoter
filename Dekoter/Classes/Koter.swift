@@ -25,7 +25,6 @@
 
 import Foundation
 
-
 /// Collects a content of an object to be converted to Data and back – from Data to the initial type.
 public class Koter {
     
