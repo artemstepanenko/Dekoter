@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 import XCTest
+import Dekoter
 
 class CatTests: XCTestCase {
     
@@ -41,7 +42,7 @@ class CatTests: XCTestCase {
     
     func test_TwoDifferentCats_AreNotEqual() {
         let charlie: Cat = Cat(name: "Charlie", surname: "Tompson", sex: .male, nationality: "US", birthPlace: nil)
-        let sonya: Cat = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UKR", birthPlace: Place(country: "Ukraine", city: "Lviv"))
+        let sonya: Cat = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv"))
         XCTAssertNotEqual(charlie, sonya)
     }
     

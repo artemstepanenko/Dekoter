@@ -1,8 +1,8 @@
 //
-//  PlaceTests.swift
+//  Array+Dekoter.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 22/01/17.
+//  Created by Artem Stepanenko on 25/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,32 +23,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
-import Dekoter
+import Foundation
 
-class PlaceTests: XCTestCase {
+public extension Array where Element: Koting {
     
-    func test_TwoMissingPlaces_AreEqual() {
-        let firstMissingPlace: Place? = nil
-        let secondMissingPlace: Place? = nil
-        XCTAssertEqual(firstMissingPlace, secondMissingPlace)
+    public var de_data: Data? {
+        let datas = flatMap { $0.de_data }
+        return NSKeyedArchiver.archivedData(withRootObject: datas)
     }
     
-    func test_MissingPlaceAndNot_AreNotEqual() {
-        let missingPlace: Place? = nil
-        let paris: Place? = Place(country: "France", city: "Paris")
-        XCTAssertNotEqual(missingPlace, paris)
-    }
-
-    func test_TwoDifferentPlaces_AreNotEqual() {
-        let palermo: Place = Place(country: "Italy", city: "Palermo")
-        let porto: Place = Place(country: "Portugal", city: "Porto")
-        XCTAssertNotEqual(palermo, porto)
-    }
-    
-    func test_TwoSimilarPlaces_AreEqual() {
-        let kharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
-        let againKharkiv: Place = Place(country: "Ukraine", city: "Kharkiv")
-        XCTAssertEqual(kharkiv, againKharkiv)
+    public static func de_from(data: Data) -> [Element]? {
+        guard let datas = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Data] else {
+            return nil
+        }
+        return datas.flatMap { Element.de_from(data: $0) }
     }
 }
