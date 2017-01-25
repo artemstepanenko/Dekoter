@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12513C3E1E2D811C000C896C /* UserDefaults+Dekoter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12513C3D1E2D811C000C896C /* UserDefaults+Dekoter.swift */; };
+		1273F4311E38CDEA00265460 /* Array+Dekoter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1273F4301E38CDEA00265460 /* Array+Dekoter.swift */; };
 		12AF8B931E12F5530033143A /* Koter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B911E12F5530033143A /* Koter.swift */; };
 		12AF8B941E12F5530033143A /* Koting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B921E12F5530033143A /* Koting.swift */; };
 		35A5A6EE58D6E26D2A18D995FE64CB32 /* Dekoter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B2D510F7744035B8C8526343EA8461 /* Dekoter-dummy.m */; };
@@ -32,6 +33,7 @@
 		02BC50558956DEFC58B13CF945AEBAB0 /* Dekoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dekoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DC9E20649C1D99A90843655723D3918 /* Pods_Dekoter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dekoter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12513C3D1E2D811C000C896C /* UserDefaults+Dekoter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Dekoter.swift"; sourceTree = "<group>"; };
+		1273F4301E38CDEA00265460 /* Array+Dekoter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Dekoter.swift"; sourceTree = "<group>"; };
 		12AF8B911E12F5530033143A /* Koter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koter.swift; sourceTree = "<group>"; };
 		12AF8B921E12F5530033143A /* Koting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koting.swift; sourceTree = "<group>"; };
 		1CB1C902F2B8335ABED002D8EF6DC2C1 /* Pods-Dekoter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Dekoter_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				12AF8B911E12F5530033143A /* Koter.swift */,
 				12AF8B921E12F5530033143A /* Koting.swift */,
 				12513C3D1E2D811C000C896C /* UserDefaults+Dekoter.swift */,
+				1273F4301E38CDEA00265460 /* Array+Dekoter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				35A5A6EE58D6E26D2A18D995FE64CB32 /* Dekoter-dummy.m in Sources */,
 				12513C3E1E2D811C000C896C /* UserDefaults+Dekoter.swift in Sources */,
 				12AF8B941E12F5530033143A /* Koting.swift in Sources */,
+				1273F4311E38CDEA00265460 /* Array+Dekoter.swift in Sources */,
 				12AF8B931E12F5530033143A /* Koter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
