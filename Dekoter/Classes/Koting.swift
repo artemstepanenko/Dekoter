@@ -25,33 +25,42 @@
 
 import Foundation
 
-
-/// Declares four methods. Two of them are already implemented, they may be used to encode/decode objects of the type (struct or class) to/from a data. Remaining two methods must be implemented.
+/// Contains four methods. Two of them are already implemented, they may be used to encode/decode objects of the type (struct or class) to/from a data. Remaining two methods must be implemented.
 public protocol Koting {
     
+    /// Encodes an object to a data.
     var de_data: Data? { get }
+    
+    /// Decodes a data to an object.
+    ///
+    /// - Parameter data: The data that an object of the given type was previously encoded to.
+    /// - Returns: The object similar to the one that was previously encoded to the provided data.
     static func de_from(data: Data) -> Self?
     
     // MARK: - To Be Overriden
     
+    /// Initializes an object based on a given coder.
+    /// Needs to be implemented. Don't call this method directly.
+    ///
+    /// - Parameter koter: The coder containing the data to be taken to initialize the object.
     init?(koter: Koter)
+    
+    /// Populates a coder with all the data to be encoded.
+    /// Needs to be implemented. Don't call this method directly.
+    ///
+    /// - Parameter koter: The coder which is supposed to consume the object's data.
     func enkot(with koter: Koter)
 }
 
+/// An extension which contains implementations of methods to convert the obect to `Data` and back.
 public extension Koting {
    
-    /// Tries to encode an object to a data. (Returns nil, if the object contains a property of an unsupported type.)
     var de_data: Data? {
         let koter = Koter()
         enkot(with: koter)
         return NSKeyedArchiver.archivedData(withRootObject: koter.objects)
     }
     
-    
-    /// Tries to decode a data to an object.
-    ///
-    /// - Parameter data: the data that an object of the given type was previously encoded to
-    /// - Returns: the object similar to the one that was previously encoded to the provided data. Returns nil, if the data was created differently.
     static func de_from(data: Data) -> Self? {
         guard let topObject = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData),
             let objects = topObject as? [AnyHashable: Any] else {
