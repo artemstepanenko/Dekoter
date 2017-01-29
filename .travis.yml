@@ -2,6 +2,6 @@ language: objective-c
 osx_image: xcode8
 
 script:
-	- xcodebuild test -workspace Example/Dekoter.xcworkspace -scheme Dekoter-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+  - xcodebuild test -workspace Example/Dekoter.xcworkspace -scheme Dekoter-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
 after_success:
-	- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
