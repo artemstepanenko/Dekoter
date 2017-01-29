@@ -16,6 +16,8 @@
  - [Convert an Array to Data in One Line](#convert-an-array-to-data-in-one-line)
 - [Micromission](#micromission)
 - [Why Dekoter](#why-dekoter)
+- [Installation](#installation)
+ - [CocoaPods](#cocoapods)
 - [Collaboration](#collaboration)
 - [License](#license)
 
@@ -195,6 +197,20 @@ You might have noticed a few cats here and there. There's a reason.
 "koting" -> "coding"
 
 "dekoter" -> "decoder"
+
+## Installation
+
+### CocoaPods
+
+Add pod `'Dekoter', '~> 0.1'` similar to the following to your Podfile:
+
+```ruby
+target 'MyApp' do
+  pod 'Dekoter', '~> 0.1'
+end
+```
+
+Then run a `pod install` inside your terminal, or from CocoaPods.app.
 
 ## Collaboration
 
