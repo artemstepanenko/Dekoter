@@ -25,13 +25,20 @@
 
 import Foundation
 
+/// An extension `Array` of objects which implement the `Koting` protocol.
+/// Allows to convert an array to `Data` and back.
 public extension Array where Element: Koting {
     
+    /// Encodes an array to a data.
     public var de_data: Data? {
         let datas = flatMap { $0.de_data }
         return NSKeyedArchiver.archivedData(withRootObject: datas)
     }
     
+    /// Decodes a data to an array.
+    ///
+    /// - Parameter data: The data that an object of the given type was previously encoded to.
+    /// - Returns: The array similar to the one that was previously encoded to the provided data.
     public static func de_from(data: Data) -> [Element]? {
         guard let datas = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Data] else {
             return nil
