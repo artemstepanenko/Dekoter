@@ -11,9 +11,9 @@
 - [How Much Familiar It Feels](#how-much-familiar-it-feels)
 - [One More Example](#one-more-example)
  - [What We've Learned from It](#what-weve-learned-from-it)
-- [Shortcuts](#shortcuts)
- - [Save It to UserDefaults in One Line](#save-it-to-userdefaults-in-one-line)
- - [Convert an Array to Data in One Line](#convert-an-array-to-data-in-one-line)
+- [Features](#features)
+ - [Save an Object to UserDefaults](#save-an-object-to-userdefaults)
+ - [Archive and Unarchive an Object](#archive-and-unarchive-an-object)
 - [Micromission](#micromission)
 - [Why Dekoter](#why-dekoter)
 - [Installation](#installation)
@@ -165,9 +165,9 @@ In the example above `Cat` has an optional `birthPlace` property of a type `Plac
 
 Regardless the type, you use the same methods: `enkotObject(_, forKey:)` for encoding and `dekotObject(forKey:)` for decoding. These methods are generic, they derive a type based on the expected return value, that's why you should always explicitly specify it.
 
-## Shortcuts
+## Features
 
-### Save It to UserDefaults in One Line
+### Save an Object to UserDefaults
 
 There are two methods implemented in a `UserDefaults` extension: `de_set(_, forKey:)` and `de_object(forKey:)`
 
@@ -177,7 +177,35 @@ userDefaults.de_set(murzik, forKey: "cat")
 let againMurzik: Cat? = userDefaults.de_object(forKey: "cat")
 ```
 
-### Convert an Array to Data in One Line
+and
+
+```swift
+let sonya = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv"))
+let puff: Cat = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
+let cats = [ sonya, puff ]
+userDefaults.de_set(cats, forKey: Key.cat)
+guard let againCats: [Cat] = userDefaults.de_object(forKey: Key.cat) else { return }
+```
+
+### Archive and Unarchive an Object
+
+The library contains two extensions for `NSKeyedArchiver` and `NSKeyedUnarchiver` with methods for objects which implement the `Koting` protocol.
+
+```swift
+let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+let data = NSKeyedArchiver.de_archivedData(withRootObject: emma)        
+guard let againEmma: Cat = NSKeyedUnarchiver.de_unarchiveObject(with: data) else { return }
+```
+
+and
+
+```swift
+let sonya = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv"))
+let puff: Cat = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
+let cats = [ sonya, puff ]
+let data = NSKeyedArchiver.de_archivedData(withRootObject: cats)
+guard let againCats: [Cat] = NSKeyedUnarchiver.de_unarchiveObject(with: data) else { return }
+```
 
 ## Micromission
 
