@@ -1,8 +1,8 @@
 //
-//  PlaceTests.swift
+//  NSKeyedArchiver+Dekoter.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 22/01/17.
+//  Created by Artem Stepanenko on 31/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,32 +23,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import XCTest
-import Dekoter
+import Foundation
 
-class PlaceTests: XCTestCase {
+/// An `NSKeyedArchiver` extension to unarchive objects which implement the `Koting` protocol.
+public extension NSKeyedArchiver {
     
-    func test_TwoMissingPlaces_AreEqual() {
-        let firstMissingPlace: Place? = nil
-        let secondMissingPlace: Place? = nil
-        XCTAssertEqual(firstMissingPlace, secondMissingPlace)
+    /// Archives an object which implement the `Koting` protocol to `Data`.
+    ///
+    /// - Parameter rootObject: The object which implement the `Koting` protocol.
+    /// - Returns: The archived object.
+    public class func de_archivedData(withRootObject rootObject: Koting) -> Data {
+        let koter = Koter()
+        rootObject.enkot(with: koter)
+        return archivedData(withRootObject: koter.objects)
     }
     
-    func test_MissingPlaceAndNot_AreNotEqual() {
-        let missingPlace: Place? = nil
-        let paris: Place? = Place(country: "France", city: "Paris")
-        XCTAssertNotEqual(missingPlace, paris)
-    }
-
-    func test_TwoDifferentPlaces_AreNotEqual() {
-        let palermo = Place(country: "Italy", city: "Palermo")
-        let porto = Place(country: "Portugal", city: "Porto")
-        XCTAssertNotEqual(palermo, porto)
-    }
-    
-    func test_TwoSimilarPlaces_AreEqual() {
-        let kharkiv = Place(country: "Ukraine", city: "Kharkiv")
-        let againKharkiv = Place(country: "Ukraine", city: "Kharkiv")
-        XCTAssertEqual(kharkiv, againKharkiv)
+    /// Archives an array.
+    ///
+    /// - Parameter rootObject: The array of objects which implement the `Koting` protocol.
+    /// - Returns: The archived array.
+    public class func de_archivedData(withRootObject rootObject: [Koting]) -> Data {
+        let datas = rootObject.map { de_archivedData(withRootObject: $0) }
+        return archivedData(withRootObject: datas)
     }
 }

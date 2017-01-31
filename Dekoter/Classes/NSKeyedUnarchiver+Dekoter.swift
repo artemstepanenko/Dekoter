@@ -1,8 +1,8 @@
 //
-//  Array+Dekoter.swift
+//  NSKeyedUnarchiver+Dekoter.swift
 //  Dekoter
 //
-//  Created by Artem Stepanenko on 25/01/17.
+//  Created by Artem Stepanenko on 31/01/17.
 //  Copyright (c) 2016 Artem Stepanenko <artem.stepanenko.1@gmail.com>
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,24 +25,31 @@
 
 import Foundation
 
-/// An extension `Array` of objects which implement the `Koting` protocol.
-/// Allows to convert an array to `Data` and back.
-public extension Array where Element: Koting {
+/// An `NSKeyedUnarchiver` extension to unarchive objects which implement the `Koting` protocol.
+public extension NSKeyedUnarchiver {
     
-    /// Encodes an array to a data.
-    public var de_data: Data? {
-        let datas = flatMap { $0.de_data }
-        return NSKeyedArchiver.archivedData(withRootObject: datas)
+    /// Unarchives an object which implements the `Koting` protocol from the given data.
+    ///
+    /// - Parameter data: The archived object.
+    /// - Returns: The object similar to the one that was previously archived.
+    public class func de_unarchiveObject<T: Koting>(with data: Data) -> T? {
+        guard let topObject = try? unarchiveTopLevelObjectWithData(data as NSData),
+            let objects = topObject as? [AnyHashable: Any] else {
+                
+                return nil
+        }
+        let coder = Koter(objects: objects)
+        return T(koter: coder)
     }
     
-    /// Decodes a data to an array.
+    /// Unarchives an array of objects which implement the `Koting` protocol.
     ///
     /// - Parameter data: The data that an object of the given type was previously encoded to.
     /// - Returns: The array similar to the one that was previously encoded to the provided data.
-    public static func de_from(data: Data) -> [Element]? {
-        guard let datas = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Data] else {
+    public class func de_unarchiveObject<T: Koting>(with data: Data) -> [T]? {
+        guard let datas = unarchiveObject(with: data) as? [Data] else {
             return nil
         }
-        return datas.flatMap { Element.de_from(data: $0) }
+        return datas.flatMap { de_unarchiveObject(with: $0) }
     }
 }

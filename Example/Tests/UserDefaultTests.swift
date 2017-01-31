@@ -36,45 +36,38 @@ class UserDefaultTests: XCTestCase {
         super.tearDown()
     }
     
-    func testUserDefaults_ReturnNil_IfObjectIsMissing() {
+    func testUserDefaults_IfNilSaved_ReturnsNil() {
         let missingCat: Cat? = userDefaults.de_object(forKey: Key.cat)
         XCTAssertNil(missingCat)
     }
     
-    func testMurzik_AfterExtractingFrom_StaysMurzik() {
-        let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "GER", birthPlace: nil)
+    func testUserDefaults_IfObjectSaved_ReturnsTheSameObject() {
+        let murzik = Cat(name: "Murzik", surname: nil, sex: .male, nationality: "GER",
+                         birthPlace: Place(country: "Germany", city: "Jena"))
         
         userDefaults.de_set(murzik, forKey: Key.cat)
         
         guard let againMurzik: Cat = userDefaults.de_object(forKey: Key.cat) else {
-            XCTFail()
+            XCTFail("Failed to load Murzik")
             return
         }
         
-        // name
-        let actualName = againMurzik.name
-        let expectedName = "Murzik"
-        XCTAssertEqual(actualName, expectedName)
+        XCTAssertEqual(murzik, againMurzik)
+    }
+    
+    func testUserDefaults_IfArraySaved_ReturnsTheSameArray() {
+        let sonya = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA",
+                        birthPlace: Place(country: "Ukraine", city: "Lviv"))
+        let puff: Cat = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
+        let cats = [ sonya, puff ]
         
-        // surname
-        let actualSurname = againMurzik.surname
-        let expectedSurname: String? = nil
-        XCTAssertEqual(actualSurname, expectedSurname)
+        userDefaults.de_set(cats, forKey: Key.cat)
+        guard let againCats: [Cat] = userDefaults.de_object(forKey: Key.cat) else {
+            XCTFail("Failed to load cats")
+            return
+        }
         
-        // sex
-        let actualSex = againMurzik.sex
-        let expectedSex = Cat.Sex.male
-        XCTAssertEqual(actualSex, expectedSex)
-        
-        // nationality
-        let actualNationality = againMurzik.nationality
-        let expectedNationality = "GER"
-        XCTAssertEqual(actualNationality, expectedNationality)
-        
-        // birth place
-        let actualBirthPlace = againMurzik.birthPlace
-        let expectedBirthPlace: Place? = nil
-        XCTAssertEqual(actualBirthPlace, expectedBirthPlace)
+        XCTAssertEqual(cats, againCats)
     }
 }
 
