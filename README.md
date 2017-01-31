@@ -230,11 +230,11 @@ You might have noticed a few cats here and there. There's a reason.
 
 ### CocoaPods
 
-Add pod `'Dekoter', '~> 0.1'` similar to the following to your Podfile:
+Add `pod 'Dekoter'` similar to the following to your Podfile:
 
 ```ruby
 target 'MyApp' do
-  pod 'Dekoter', '~> 0.1'
+  pod 'Dekoter'
 end
 ```
 
