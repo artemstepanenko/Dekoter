@@ -25,19 +25,12 @@
 
 import Foundation
 
-/// Contains four methods. Two of them are already implemented, they may be used to encode/decode objects of the type (struct or class) to/from a data. Remaining two methods must be implemented.
+/// Structs and classes which implement this protocol may be used in conjunction with
+/// extension from the `Dekoter` library.
+///
+/// - To save objects to UserDefaults.
+/// - To convert objects to `Data` (archive) and back (unarchive).
 public protocol Koting {
-    
-    /// Encodes an object to a data.
-    var de_data: Data? { get }
-    
-    /// Decodes a data to an object.
-    ///
-    /// - Parameter data: The data that an object of the given type was previously encoded to.
-    /// - Returns: The object similar to the one that was previously encoded to the provided data.
-    static func de_from(data: Data) -> Self?
-    
-    // MARK: - To Be Overriden
     
     /// Initializes an object based on a given coder.
     /// Needs to be implemented. Don't call this method directly.
@@ -50,24 +43,4 @@ public protocol Koting {
     ///
     /// - Parameter koter: The coder which is supposed to consume the object's data.
     func enkot(with koter: Koter)
-}
-
-/// An extension which contains implementations of methods to convert the obect to `Data` and back.
-public extension Koting {
-   
-    var de_data: Data? {
-        let koter = Koter()
-        enkot(with: koter)
-        return NSKeyedArchiver.archivedData(withRootObject: koter.objects)
-    }
-    
-    static func de_from(data: Data) -> Self? {
-        guard let topObject = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData),
-            let objects = topObject as? [AnyHashable: Any] else {
-                
-            return nil
-        }
-        let coder = Koter(objects: objects)
-        return Self(koter: coder)
-    }
 }

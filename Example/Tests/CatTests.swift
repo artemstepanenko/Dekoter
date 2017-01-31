@@ -47,8 +47,8 @@ class CatTests: XCTestCase {
     }
     
     func test_TwoSimilarCats_AreEqual() {
-        let emma: Cat = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
-        let againEmma: Cat = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        let againEmma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
         XCTAssertEqual(emma, againEmma)
     }
 }

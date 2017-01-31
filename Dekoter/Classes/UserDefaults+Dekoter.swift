@@ -34,11 +34,10 @@ public extension UserDefaults {
     ///   - value: The object which implements Koting to store in the defaults database.
     ///   - defaultName: The key with which to associate with the value.
     public func de_set(_ value: Koting?, forKey defaultName: String) {
-        guard let value = value,
-            let data = value.de_data else {
-            
+        guard let value = value else {
             return
         }
+        let data = NSKeyedArchiver.de_archivedData(withRootObject: value)
         set(data, forKey: defaultName)
     }
     
@@ -50,6 +49,6 @@ public extension UserDefaults {
         guard let data = object(forKey: defaultName) as? Data else {
             return nil
         }
-        return T.de_from(data: data)
+        return NSKeyedUnarchiver.de_unarchiveObject(with: data)
     }
 }

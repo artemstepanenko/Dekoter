@@ -48,11 +48,11 @@ public class Koter {
     /// - Returns: The object which implements the `Koting` protocol that was previously encoded.
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
         guard let data = objects[key] as? Data,
-            let codingObject = T.de_from(data: data) else {
+            let object: T = NSKeyedUnarchiver.de_unarchiveObject(with: data) else {
                 
             return nil
         }
-        return codingObject
+        return object
     }
     
     /// Decodes and returns an array of objects which implement Koting that was previously encoded and associated with the string key.
@@ -63,7 +63,7 @@ public class Koter {
         guard let datas = objects[key] as? [Data] else {
             return nil
         }
-        return datas.flatMap { T.de_from(data: $0) }
+        return datas.flatMap { NSKeyedUnarchiver.de_unarchiveObject(with: $0) }
     }
     
     /// Encodes an object which implements the `Koting` protocol and associates it with the string key.
@@ -71,11 +71,11 @@ public class Koter {
     /// - Parameters:
     ///   - object: The object which implements Koting.
     ///   - key: The string key.
-    public func enkotObject<T: Koting>(_ object: T?, forKey key: AnyHashable) {
-        guard let object = object, let data = object.de_data else {
+    public func enkotObject(_ object: Koting?, forKey key: AnyHashable) {
+        guard let object = object else {
             return
         }
-        objects[key] = data
+        objects[key] = NSKeyedArchiver.de_archivedData(withRootObject: object)
     }
     
     /// Encodes an array of objects which implement the `Koting` protocol and associates it with the string key.
@@ -83,11 +83,11 @@ public class Koter {
     /// - Parameters:
     ///   - object: The array of objects which implement the `Koting` protocol.
     ///   - key: The string key.
-    public func enkotObject<T: Koting>(_ object: [T]?, forKey key: AnyHashable) {
+    public func enkotObject(_ object: [Koting]?, forKey key: AnyHashable) {
         guard let object = object else {
             return
         }
-        objects[key] = object.flatMap { $0.de_data }
+        objects[key] = object.flatMap { NSKeyedArchiver.de_archivedData(withRootObject: $0) }
     }
     
     /// Encodes an object and associates it with the string key.
@@ -95,7 +95,7 @@ public class Koter {
     /// - Parameters:
     ///   - object: The object.
     ///   - key: The string key.
-    public func enkotObject<T>(_ object: T?, forKey key: AnyHashable) {
+    public func enkotObject(_ object: Any?, forKey key: AnyHashable) {
         guard let object = object else {
             return
             
