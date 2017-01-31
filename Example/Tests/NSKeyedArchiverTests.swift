@@ -41,7 +41,8 @@ class NSKeyedArchiverTests: XCTestCase {
     }
     
     func testEmma_AfterDekoting_StaysTheSame() {
-        let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR",
+                       birthPlace: Place(country: "France", city: "Marseille"))
         let data = NSKeyedArchiver.de_archivedData(withRootObject: emma)
         
         guard let againEmma: Cat = NSKeyedUnarchiver.de_unarchiveObject(with: data) else {
@@ -82,7 +83,8 @@ extension NSKeyedArchiverTests {
     }
     
     func testOneCatArray_AfterDekoting_ContainsTheSameCat() {
-        let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR", birthPlace: Place(country: "France", city: "Marseille"))
+        let emma = Cat(name: "Emma", surname: "Lambert", sex: .female, nationality: "FR",
+                       birthPlace: Place(country: "France", city: "Marseille"))
         
         let cats = [ emma ]
         let data = NSKeyedArchiver.de_archivedData(withRootObject: cats)
@@ -96,7 +98,8 @@ extension NSKeyedArchiverTests {
     }
     
     func testTwoCatsArray_AfterDekoting_ContainsTheSameCats() {
-        let sonya = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv"))
+        let sonya = Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA",
+                        birthPlace: Place(country: "Ukraine", city: "Lviv"))
         let puff: Cat = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
         
         let cats = [ sonya, puff ]
