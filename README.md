@@ -1,5 +1,3 @@
-![](https://github.com/artemstepanenko/Dekoter/blob/master/cat.png)
-
 # Dekoter
 
 [![Build Status](https://travis-ci.org/artemstepanenko/Dekoter.svg?branch=master)](https://travis-ci.org/artemstepanenko/Dekoter)
@@ -262,3 +260,5 @@ I'm always happy to read an email from you.
 ## License
 
 It's available under the MIT license. See the LICENSE file for more info.
+
+![](https://github.com/artemstepanenko/Dekoter/blob/master/cat.png)
