@@ -2,6 +2,12 @@
 
 ---
 
+## 0.2.1
+
+### Fix
+
+* UserDefaults deletes an object if nil is saved.
+
 ## 0.2.0
 
 ### Features
@@ -16,8 +22,8 @@
 
 ### Features
 
-* Handy UserDefauls extension
-* More unit tests
+* Handy UserDefauls extension.
+* More unit tests.
 
 ## 0.1.0
 
