@@ -36,6 +36,17 @@ class UserDefaultTests: XCTestCase {
         super.tearDown()
     }
     
+    func testUserDefaults_IfNilSaved_RemovesObject() {
+        let puff: Cat = Cat(name: "Puff", surname: nil, sex: .female, nationality: "US", birthPlace: nil)
+        
+        userDefaults.de_set(puff, forKey: Key.cat)
+        userDefaults.de_set(nil as Cat?, forKey: Key.cat)
+        
+        let cat: Cat? = userDefaults.de_object(forKey: Key.cat)
+        XCTAssertNil(cat)
+    }
+
+    
     func testUserDefaults_IfNilSaved_ReturnsNil() {
         let missingCat: Cat? = userDefaults.de_object(forKey: Key.cat)
         XCTAssertNil(missingCat)

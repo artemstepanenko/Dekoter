@@ -34,10 +34,10 @@ public extension UserDefaults {
     ///   - value: The object which implements the `Koting` protocol to store in the defaults database.
     ///   - defaultName: The key with which to associate with the value.
     public func de_set(_ value: Koting?, forKey defaultName: String) {
-        guard let value = value else {
-            return
+        var data: Data? = nil
+        if let value = value {
+            data = NSKeyedArchiver.de_archivedData(withRootObject: value)
         }
-        let data = NSKeyedArchiver.de_archivedData(withRootObject: value)
         set(data, forKey: defaultName)
     }
     
@@ -48,10 +48,10 @@ public extension UserDefaults {
     ///   - value: The array of objects which implement the `Koting` protocol to store in the defaults database.
     ///   - defaultName: The key with which to associate with the array.
     public func de_set(_ value: [Koting]?, forKey defaultName: String) {
-        guard let value = value else {
-            return
+        var data: Data? = nil
+        if let value = value {
+            data = NSKeyedArchiver.de_archivedData(withRootObject: value)
         }
-        let data = NSKeyedArchiver.de_archivedData(withRootObject: value)
         set(data, forKey: defaultName)
     }
     
