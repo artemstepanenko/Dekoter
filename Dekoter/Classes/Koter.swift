@@ -87,7 +87,7 @@ public class Koter {
         guard let object = object else {
             return
         }
-        objects[key] = object.flatMap { NSKeyedArchiver.de_archivedData(withRootObject: $0) }
+        objects[key] = object.map { NSKeyedArchiver.de_archivedData(withRootObject: $0) }
     }
     
     /// Encodes an object and associates it with the string key.
