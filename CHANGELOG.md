@@ -2,6 +2,12 @@
 
 ---
 
+## 0.2.2
+
+### Fix
+
+* Fixed "Enkoting of array leads to incorrect result #12"
+
 ## 0.2.1
 
 ### Fix
