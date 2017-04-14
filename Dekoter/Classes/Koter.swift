@@ -47,12 +47,8 @@ public class Koter {
     /// - Parameter key: The string key.
     /// - Returns: The object which implements the `Koting` protocol that was previously encoded.
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
-        guard let data = objects[key] as? Data,
-            let object: T = NSKeyedUnarchiver.de_unarchiveObject(with: data) else {
-                
-            return nil
-        }
-        return object
+        let object = objects[key]
+        return convertObject(object)
     }
     
     /// Decodes and returns an array of objects which implement Koting that was previously encoded and associated with the string key.
@@ -60,10 +56,10 @@ public class Koter {
     /// - Parameter key: The string key.
     /// - Returns: The array of objects which implement the `Koting` protocol that was previously encoded.
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> [T]? {
-        guard let datas = objects[key] as? [Data] else {
+        guard let objects = objects[key] as? [Any] else {
             return nil
         }
-        return datas.flatMap { NSKeyedUnarchiver.de_unarchiveObject(with: $0) }
+        return objects.flatMap { convertObject($0) }
     }
     
     /// Encodes an object which implements the `Koting` protocol and associates it with the string key.
@@ -113,5 +109,14 @@ public class Koter {
     /// An initializer which takes objects to store.
     public required init(objects: [AnyHashable: Any]) {
         self.objects = objects
+    }
+    
+    // MARK: - Internal
+    
+    func convertObject<T: Koting>(_ object: Any?) -> T? {
+        guard let data = object as? Data else {
+            return nil
+        }
+        return NSKeyedUnarchiver.de_unarchiveObject(with: data)
     }
 }
