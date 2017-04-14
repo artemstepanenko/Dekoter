@@ -27,13 +27,16 @@ import Foundation
 
 extension JSONSerialization {
     
-    class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) -> T? {
-        guard let object = try? jsonObject(with: data, options: opt),
-            let dict = object as? [AnyHashable: Any] else {
-            
-            return nil
+    class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) throws -> T {
+        let object = try jsonObject(with: data, options: opt)
+        guard let dict = object as? [AnyHashable: Any] else {
+            throw NSError(domain: "Dekoter", code: 5001, userInfo: ["NSDebugDescription": "JSON object is not a dictionary."])
         }
+        
         let coder = JSONKoter(objects: dict)
-        return T(koter: coder)
+        guard let result = T(koter: coder) else {
+            throw NSError(domain: "Dekoter", code: 5002, userInfo: ["NSDebugDescription": "JSON object doesn't conform to the requested type."])
+        }
+        return result
     }
 }
