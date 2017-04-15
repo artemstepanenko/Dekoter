@@ -32,12 +32,14 @@ public extension NSKeyedUnarchiver {
     ///
     /// - Parameter data: The archived object.
     /// - Returns: The object similar to the one that was previously archived.
-    public class func de_unarchiveObject<T: Koting>(with data: Data) -> T? {
-        guard let topObject = try? unarchiveTopLevelObjectWithData(data as NSData),
-            let objects = topObject as? [AnyHashable: Any] else {
-                
+    public class func de_unarchiveObject<T: Koting>(with data: Data) throws -> T? {
+        guard let topObject = try unarchiveTopLevelObjectWithData(data as NSData) else {
             return nil
         }
+        guard let objects = topObject as? [AnyHashable: Any] else {
+            throw NSError.unarchivingObjectIsNotDictionaryError
+        }
+        
         let coder = Koter(objects: objects)
         return T(koter: coder)
     }
@@ -46,10 +48,10 @@ public extension NSKeyedUnarchiver {
     ///
     /// - Parameter data: The data that an object of the given type was previously encoded to.
     /// - Returns: The array similar to the one that was previously encoded to the provided data.
-    public class func de_unarchiveObject<T: Koting>(with data: Data) -> [T]? {
+    public class func de_unarchiveObject<T: Koting>(with data: Data) throws -> [T]? {
         guard let datas = unarchiveObject(with: data) as? [Data] else {
             return nil
         }
-        return datas.flatMap { de_unarchiveObject(with: $0) }
+        return try datas.flatMap { try de_unarchiveObject(with: $0) }
     }
 }
