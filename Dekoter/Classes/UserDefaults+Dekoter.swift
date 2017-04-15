@@ -59,21 +59,21 @@ public extension UserDefaults {
     ///
     /// - Parameter defaultName: A key in the current user's defaults database.
     /// - Returns: The object which implements the `Koting` protocol.
-    public func de_object<T: Koting>(forKey defaultName: String) -> T? {
+    public func de_object<T: Koting>(forKey defaultName: String) throws -> T? {
         guard let data = object(forKey: defaultName) as? Data else {
             return nil
         }
-        return NSKeyedUnarchiver.de_unarchiveObject(with: data)
+        return try NSKeyedUnarchiver.de_unarchiveObject(with: data)
     }
     
     /// Returns the array of objects which implement the `Koting` protocol associated with the specified key.
     ///
     /// - Parameter defaultName: A key in the current user's defaults database.
     /// - Returns: The array of objects which implement the `Koting` protocol.
-    public func de_object<T: Koting>(forKey defaultName: String) -> [T]? {
+    public func de_object<T: Koting>(forKey defaultName: String) throws -> [T]? {
         guard let data = object(forKey: defaultName) as? Data else {
             return nil
         }
-        return NSKeyedUnarchiver.de_unarchiveObject(with: data)
+        return try NSKeyedUnarchiver.de_unarchiveObject(with: data)
     }
 }
