@@ -29,7 +29,7 @@ class JSONKoter: Koter {
     
     // MARK: - Internal
     
-    override func convertObject<T : Koting>(_ object: Any?) -> T? {
+    override func convertObject<T: Koting>(_ object: Any?) -> T? {
         guard let dict = object as? [AnyHashable: Any] else {
             return nil
         }
