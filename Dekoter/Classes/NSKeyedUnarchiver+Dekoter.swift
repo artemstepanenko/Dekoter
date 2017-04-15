@@ -36,7 +36,7 @@ public extension NSKeyedUnarchiver {
         guard let topObject = try? unarchiveTopLevelObjectWithData(data as NSData),
             let objects = topObject as? [AnyHashable: Any] else {
                 
-                return nil
+            return nil
         }
         let coder = Koter(objects: objects)
         return T(koter: coder)
