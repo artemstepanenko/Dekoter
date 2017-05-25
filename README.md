@@ -215,6 +215,8 @@ let oneCat: Cat? = JSONSerialization.de_jsonObject(with: oneCatData)
 let cats: [Cat]? = JSONSerialization.de_jsonObject(with: catsData)
 ```
 
+For structs which make use only of this feature there's no need to implement the `Koting` protocol (contains 2 methods), instead implement a `Dekoting` protocol (only 1 method).
+
 ## Micromission
 
 The library is small but proud of its mission, though the latter is also not that big. It's willing to serve developers as good as `NSCoding` does. Developers shouldn't feel lost and disappointed without a convenient tool to convert their Swift structs to `Data` and back.

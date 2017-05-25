@@ -5,6 +5,7 @@
 ### Feature
 
 * `JSONSerialization` extension.
+* The `Koting` protocol is split into `Dekoting` and `Enkoting`.
 
 ## 0.2.2
 
