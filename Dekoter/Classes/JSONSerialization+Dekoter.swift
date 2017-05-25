@@ -30,7 +30,7 @@ extension JSONSerialization {
     class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) throws -> T {
         let object = try jsonObject(with: data, options: opt)
         guard let dict = object as? [AnyHashable: Any] else {
-            throw NSError.jsonObjectIsNotDictionaryError
+            throw NSError(domain: "Dekoter", code: 5001, userInfo: ["NSDebugDescription": "JSON object is not a dictionary."])
         }
         return try de_serializedObject(from: dict)
     }
@@ -38,8 +38,9 @@ extension JSONSerialization {
     class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) throws -> [T] {
         let object = try jsonObject(with: data, options: opt)
         guard let dicts = object as? [[AnyHashable: Any]] else {
-            throw NSError.jsonObjectIsNotArrayError
+            throw NSError(domain: "Dekoter", code: 5003, userInfo: ["NSDebugDescription": "JSON object is not an array of dictionaries."])
         }
+        
         return try dicts.map { try de_serializedObject(from: $0) }
     }
 }
@@ -51,7 +52,7 @@ fileprivate extension JSONSerialization {
     class func de_serializedObject<T: Koting>(from dict: [AnyHashable: Any]) throws -> T {
         let coder = JSONKoter(objects: dict)
         guard let object = T(koter: coder) else {
-            throw NSError.jsonObjectDoesNotConformToTypeError
+            throw NSError(domain: "Dekoter", code: 5002, userInfo: ["NSDebugDescription": "JSON object doesn't conform to the requested type."])
         }
         return object
     }

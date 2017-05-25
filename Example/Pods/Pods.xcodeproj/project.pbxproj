@@ -14,7 +14,6 @@
 		12AF8B941E12F5530033143A /* Koting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF8B921E12F5530033143A /* Koting.swift */; };
 		12C680B71EA1178A0035EFA3 /* JSONSerialization+Dekoter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C680B61EA1178A0035EFA3 /* JSONSerialization+Dekoter.swift */; };
 		12C680B91EA12EB60035EFA3 /* JSONKoter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C680B81EA12EB60035EFA3 /* JSONKoter.swift */; };
-		12C680BB1EA239A50035EFA3 /* NSError+Dekoter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C680BA1EA239A50035EFA3 /* NSError+Dekoter.swift */; };
 		35A5A6EE58D6E26D2A18D995FE64CB32 /* Dekoter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B2D510F7744035B8C8526343EA8461 /* Dekoter-dummy.m */; };
 		3BF2061EB85B55F584F7BF475194ECF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		8CE68D98C9FCB9BF88BD3B8B5E49E712 /* Dekoter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0BEB9C068CF0C41DEB6483DF26A864 /* Dekoter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,7 +42,6 @@
 		12AF8B921E12F5530033143A /* Koting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koting.swift; sourceTree = "<group>"; };
 		12C680B61EA1178A0035EFA3 /* JSONSerialization+Dekoter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONSerialization+Dekoter.swift"; sourceTree = "<group>"; };
 		12C680B81EA12EB60035EFA3 /* JSONKoter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKoter.swift; sourceTree = "<group>"; };
-		12C680BA1EA239A50035EFA3 /* NSError+Dekoter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Dekoter.swift"; sourceTree = "<group>"; };
 		1CB1C902F2B8335ABED002D8EF6DC2C1 /* Pods-Dekoter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Dekoter_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		30FA1F9E6C3F432C1FC84199A0FCAC07 /* Pods-Dekoter_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Dekoter_Tests.modulemap"; sourceTree = "<group>"; };
 		322035EB88B9E0664937682152FEAF7B /* Pods-Dekoter_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Dekoter_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				122DBC091E410E8F00367DDC /* NSKeyedArchiver+Dekoter.swift */,
 				122DBC0B1E410FBE00367DDC /* NSKeyedUnarchiver+Dekoter.swift */,
 				12C680B61EA1178A0035EFA3 /* JSONSerialization+Dekoter.swift */,
-				12C680BA1EA239A50035EFA3 /* NSError+Dekoter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -313,7 +310,6 @@
 				12AF8B941E12F5530033143A /* Koting.swift in Sources */,
 				122DBC0C1E410FBE00367DDC /* NSKeyedUnarchiver+Dekoter.swift in Sources */,
 				122DBC0A1E410E8F00367DDC /* NSKeyedArchiver+Dekoter.swift in Sources */,
-				12C680BB1EA239A50035EFA3 /* NSError+Dekoter.swift in Sources */,
 				12AF8B931E12F5530033143A /* Koter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
