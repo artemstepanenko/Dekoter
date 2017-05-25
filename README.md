@@ -12,6 +12,7 @@
 - [Features](#features)
  - [Save an Object to UserDefaults](#save-an-object-to-userdefaults)
  - [Archive and Unarchive an Object](#archive-and-unarchive-an-object)
+ - [JSON](#json)
 - [Micromission](#micromission)
 - [Why Dekoter](#why-dekoter)
 - [Installation](#installation)
