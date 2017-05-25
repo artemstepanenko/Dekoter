@@ -205,6 +205,15 @@ let data = NSKeyedArchiver.de_archivedData(withRootObject: cats)
 guard let againCats: [Cat] = NSKeyedUnarchiver.de_unarchiveObject(with: data) else { return }
 ```
 
+### JSON
+
+A `JSONSerialization` extension makes deserialization from JSON very easy.
+
+```swift
+let oneCat: Cat? = JSONSerialization.de_jsonObject(with: oneCatData)
+let cats: [Cat]? = JSONSerialization.de_jsonObject(with: catsData)
+```
+
 ## Micromission
 
 The library is small but proud of its mission, though the latter is also not that big. It's willing to serve developers as good as `NSCoding` does. Developers shouldn't feel lost and disappointed without a convenient tool to convert their Swift structs to `Data` and back.

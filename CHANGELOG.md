@@ -2,6 +2,10 @@
 
 ---
 
+### Feature
+
+* `JSONSerialization` extension.
+
 ## 0.2.2
 
 ### Fix

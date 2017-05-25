@@ -18,8 +18,8 @@ class JSONSerializationTests: XCTestCase {
             return
         }
         
-        guard let actualCat: Cat = try? JSONSerialization.de_jsonObject(with: data) else {
-            XCTFail("Can't parse json to a cat")
+        guard let actualCat: Cat = JSONSerialization.de_jsonObject(with: data) else {
+            XCTFail("Can't deserialize JSON to a cat")
             return
         }
         
@@ -27,61 +27,32 @@ class JSONSerializationTests: XCTestCase {
         XCTAssertEqual(expectedCat, actualCat)
     }
     
-    func testInvalidJSON_ThrowsException() {
+    func testInvalidJSON_ReturnsNil() {
         guard let data = data(from: "invalid JSON") else {
             return
         }
         
-        do {
-            let _: Cat = try JSONSerialization.de_jsonObject(with: data)
-            XCTFail("It should have thrown an exception")
-            
-        } catch let error {
-            guard let actualMessage = (error as NSError).userInfo["NSDebugDescription"] as? String else {
-                XCTFail("Wrong exception type")
-                return
-            }
-            let expectedMessage = "JSON text did not start with array or object and option to allow fragments not set."
-            XCTAssertEqual(expectedMessage, actualMessage)
-        }
+        let actualCat: Cat? = JSONSerialization.de_jsonObject(with: data)
+        XCTAssertNil(actualCat)
     }
 
-    func testWrongJSONObjectType_ThrowsException() {
+    func testWrongJSONObjectType_ReturnsNil() {
         guard let data = data(from: "[]") else {
             return
         }
         
-        do {
-            let _: Cat = try JSONSerialization.de_jsonObject(with: data)
-            XCTFail("It should have thrown an exception")
-            
-        } catch let error {
-            guard let actualMessage = (error as NSError).userInfo["NSDebugDescription"] as? String else {
-                XCTFail("Wrong exception type")
-                return
-            }
-            let expectedMessage = "JSON object is not a dictionary."
-            XCTAssertEqual(expectedMessage, actualMessage)
-        }
+        
+        let actualCat: Cat? = JSONSerialization.de_jsonObject(with: data)
+        XCTAssertNil(actualCat)
     }
 
-    func testWrongJSONObjectStructure_ThrowsException() {
+    func testWrongJSONObjectStructure_ReturnsNil() {
         guard let data = data(from: "{\"name\": 0, \"surname\": \"Kryvonis\", \"sex\": 1, \"nationality\": \"UA\", \"birthPlace\": {\"country\": \"Ukraine\", \"city\": \"Lviv\"}}") else {
             return
         }
         
-        do {
-            let _: Cat = try JSONSerialization.de_jsonObject(with: data)
-            XCTFail("It should have thrown an exception")
-            
-        } catch let error {
-            guard let actualMessage = (error as NSError).userInfo["NSDebugDescription"] as? String else {
-                XCTFail("Wrong exception type")
-                return
-            }
-            let expectedMessage = "JSON object doesn't conform to the requested type."
-            XCTAssertEqual(expectedMessage, actualMessage)
-        }
+        let actualCat: Cat? = JSONSerialization.de_jsonObject(with: data)
+        XCTAssertNil(actualCat)
     }
     
     // MARK: - Array
@@ -91,52 +62,39 @@ class JSONSerializationTests: XCTestCase {
             return
         }
         
-        guard let actualCats: [Cat] = try? JSONSerialization.de_jsonObject(with: data) else {
-            XCTFail("Can't parse json to an array of cats")
+        guard let actualCats: [Cat] = JSONSerialization.de_jsonObject(with: data) else {
+            XCTFail("Can't deserialize JSON to cats")
             return
         }
         
-        let expectedCats = [Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv")),
-                            Cat(name: "Charlie", surname: "Tompson", sex: .male, nationality: "US", birthPlace: nil)]
+        let expectedCats: [Cat] = [Cat(name: "Sonya", surname: "Kryvonis", sex: .female, nationality: "UA", birthPlace: Place(country: "Ukraine", city: "Lviv")),
+                                   Cat(name: "Charlie", surname: "Tompson", sex: .male, nationality: "US", birthPlace: nil)]
+        
         XCTAssertEqual(expectedCats, actualCats)
     }
     
-    func testInvalidJSON_ThrowsException_WhenArrayIsExpected() {
+    func testInvalidJSON_ReturnsNil_WhenArrayIsExpected() {
         guard let data = data(from: "invalid JSON") else {
             return
         }
         
-        do {
-            let _: [Cat] = try JSONSerialization.de_jsonObject(with: data)
-            XCTFail("It should have thrown an exception")
-            
-        } catch let error {
-            guard let actualMessage = (error as NSError).userInfo["NSDebugDescription"] as? String else {
-                XCTFail("Wrong exception type")
-                return
-            }
-            let expectedMessage = "JSON text did not start with array or object and option to allow fragments not set."
-            XCTAssertEqual(expectedMessage, actualMessage)
-        }
+        let actualCats: [Cat]? = JSONSerialization.de_jsonObject(with: data)
+        XCTAssertNil(actualCats)
     }
     
-    func testWrongJSONObjectStructure_ThrowsException_WhenArrayIsExpected() {
+    func testWrongJSON_OfValidAndInvalidObjects_ReturnsOnlyValidOne() {
         guard let data = data(from: "[{\"surname\": \"Kryvonis\", \"sex\": 1, \"nationality\": \"UA\", \"birthPlace\": {\"country\": \"Ukraine\", \"city\": \"Lviv\"}},{\"name\": \"Charlie\", \"surname\": \"Tompson\", \"sex\": 0, \"nationality\": \"US\"}]") else {
             return
         }
         
-        do {
-            let _: [Cat] = try JSONSerialization.de_jsonObject(with: data)
-            XCTFail("It should have thrown an exception")
-            
-        } catch let error {
-            guard let actualMessage = (error as NSError).userInfo["NSDebugDescription"] as? String else {
-                XCTFail("Wrong exception type")
-                return
-            }
-            let expectedMessage = "JSON object doesn't conform to the requested type."
-            XCTAssertEqual(expectedMessage, actualMessage)
+        guard let cats: [Cat] = JSONSerialization.de_jsonObject(with: data) else {
+            XCTFail("Can't deserialize JSON to cats")
+            return
         }
+        
+        let actualAmount = cats.count
+        let expectedAmount = 1
+        XCTAssertEqual(expectedAmount, actualAmount)
     }
 }
 
