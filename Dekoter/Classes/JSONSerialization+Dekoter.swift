@@ -25,6 +25,7 @@
 
 import Foundation
 
+/// An `JSONSerialization` extension to deserialize objects which implement the `Koting` protocol from JSON.
 extension JSONSerialization {
     
     /// Creates an object which implements the `Koting` protocol from JSON data.
@@ -33,7 +34,7 @@ extension JSONSerialization {
     ///   - data: JSON data.
     ///   - opt: Options.
     /// - Returns: A deserialized object.
-    class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) -> T? {
+    class func de_jsonObject<T: Dekoting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) -> T? {
         guard let object = try? jsonObject(with: data, options: opt),
             let dict = object as? [AnyHashable: Any] else {
             
@@ -48,7 +49,7 @@ extension JSONSerialization {
     ///   - data: JSON data.
     ///   - opt: Options.
     /// - Returns: A deserialized array.
-    class func de_jsonObject<T: Koting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) -> [T]? {
+    class func de_jsonObject<T: Dekoting>(with data: Data, options opt: JSONSerialization.ReadingOptions = []) -> [T]? {
         guard let object = try? jsonObject(with: data, options: opt),
             let dicts = object as? [[AnyHashable: Any]] else {
             
@@ -62,7 +63,7 @@ extension JSONSerialization {
 
 fileprivate extension JSONSerialization {
     
-    class func de_serializedObject<T: Koting>(from dict: [AnyHashable: Any]) -> T? {
+    class func de_serializedObject<T: Dekoting>(from dict: [AnyHashable: Any]) -> T? {
         let coder = JSONKoter(objects: dict)
         guard let object = T(koter: coder) else {
             return nil

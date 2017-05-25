@@ -26,17 +26,26 @@
 import Foundation
 
 /// Structs and classes which implement this protocol may be used in conjunction with
-/// extension from the `Dekoter` library.
+/// extensions from the `Dekoter` library.
 ///
-/// - To save objects to UserDefaults.
+/// - To save objects to `UserDefaults`.
+/// - To deserialize objects from JSON.
 /// - To convert objects to `Data` (archive) and back (unarchive).
-public protocol Koting {
+public protocol Koting: Dekoting, Enkoting {
+}
+
+/// Is used for decoding (or deserialization).
+public protocol Dekoting {
     
     /// Initializes an object based on a given coder.
     /// Needs to be implemented. Don't call this method directly.
     ///
     /// - Parameter koter: The coder containing the data to be taken to initialize the object.
     init?(koter: Koter)
+}
+
+/// Is used for encoding (or serialization).
+public protocol Enkoting {
     
     /// Populates a coder with all the data to be encoded.
     /// Needs to be implemented. Don't call this method directly.
