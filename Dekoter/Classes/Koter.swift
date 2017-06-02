@@ -47,8 +47,10 @@ public class Koter {
     /// - Parameter key: The string key.
     /// - Returns: The object which implements the `Koting` protocol that was previously encoded.
     public func dekotObject<T: Koting>(forKey key: AnyHashable) -> T? {
-        let object = objects[key]
-        return convertObject(object)
+        guard let dict = objects[key] as? [AnyHashable: Any] else {
+            return nil
+        }
+        return object(from: dict)
     }
     
     /// Decodes and returns an array of objects which implement Koting that was previously encoded and associated with the string key.
@@ -59,7 +61,7 @@ public class Koter {
         guard let objects = objects[key] as? [Any] else {
             return nil
         }
-        return objects.flatMap { convertObject($0) }
+        return objects.flatMap { object(from: $0 as? [AnyHashable: Any]) }
     }
     
     /// Encodes an object which implements the `Koting` protocol and associates it with the string key.
@@ -71,7 +73,7 @@ public class Koter {
         guard let object = object else {
             return
         }
-        objects[key] = NSKeyedArchiver.de_archivedData(withRootObject: object)
+        objects[key] = dict(from: object)
     }
     
     /// Encodes an array of objects which implement the `Koting` protocol and associates it with the string key.
@@ -83,7 +85,7 @@ public class Koter {
         guard let object = object else {
             return
         }
-        objects[key] = object.map { NSKeyedArchiver.de_archivedData(withRootObject: $0) }
+        objects[key] = object.map { dict(from: $0) }
     }
     
     /// Encodes an object and associates it with the string key.
@@ -110,13 +112,26 @@ public class Koter {
     public required init(objects: [AnyHashable: Any]) {
         self.objects = objects
     }
+}
+
+// MARK: - Private
+
+fileprivate extension Koter {
     
-    // MARK: - Internal
-    
-    func convertObject<T: Koting>(_ object: Any?) -> T? {
-        guard let data = object as? Data else {
+    func object<T: Koting>(from dict: [AnyHashable: Any]?) -> T? {
+        guard let dict = dict else {
             return nil
         }
-        return NSKeyedUnarchiver.de_unarchiveObject(with: data)
+        let koter = Koter(objects: dict)
+        return T(koter: koter)
+    }
+    
+    func dict(from object: Koting?) -> [AnyHashable: Any]? {
+        guard let object = object else {
+            return nil
+        }
+        let koter = Koter()
+        object.enkot(with: koter)
+        return koter.objects
     }
 }
