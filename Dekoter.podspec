@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Dekoter'
-  s.version          = '0.2.2'
+  s.version          = '0.3.0'
   s.summary          = "NSCoding's counterpart for Swift structs."
   
   s.description      = <<-DESC

@@ -2,10 +2,13 @@
 
 ---
 
+## 0.3.0
+
 ### Feature
 
 * `JSONSerialization` extension.
 * The `Koting` protocol is split into `Dekoting` and `Enkoting`.
+* Decoded object structure is simplified (a breaking change).
 
 ## 0.2.2
 
