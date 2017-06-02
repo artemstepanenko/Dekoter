@@ -64,7 +64,7 @@ extension JSONSerialization {
 fileprivate extension JSONSerialization {
     
     class func de_serializedObject<T: Dekoting>(from dict: [AnyHashable: Any]) -> T? {
-        let coder = JSONKoter(objects: dict)
+        let coder = Koter(objects: dict)
         guard let object = T(koter: coder) else {
             return nil
         }
