@@ -255,11 +255,11 @@ Then run a `pod install` inside your terminal, or from CocoaPods.app.
 Dear friends, your help is more than welcome!
 There're multiple ways to support the project.
 
-- *Create an issue.*
+- [Create an issue.](https://github.com/artemstepanenko/Dekoter/issues/new)
 
 if you find a problem, or you know how to improve, or you have a question.
 
-- *Create a pull request.*
+- [Create a pull request.](https://github.com/artemstepanenko/Dekoter/compare)
 
 if you develop something important (previously filed as an issue).
 
@@ -271,6 +271,6 @@ I'm always happy to read an email from you.
 
 ## License
 
-It's available under the MIT license. See the LICENSE file for more info.
+It's available under the MIT license. See the [LICENSE](LICENSE) file for more info.
 
 ![](https://github.com/artemstepanenko/Dekoter/blob/master/cat.png)
