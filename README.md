@@ -263,7 +263,7 @@ if you find a problem, or you know how to improve, or you have a question.
 
 if you develop something important (previously filed as an issue).
 
-- *Send me an email.*
+- [Send me an email.](mailto:artem.stepanenko.1@gmail.com)
 
 if you want to share your either positive or negative experience using the library and have a hard time expressing it in a form of issue. Or, maybe, you don't want to make it publicly available.
 
