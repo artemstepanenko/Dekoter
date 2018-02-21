@@ -33,7 +33,7 @@ public extension NSKeyedUnarchiver {
     /// - Parameter data: The archived object.
     /// - Returns: The object similar to the one that was previously archived.
     public class func de_unarchiveObject<T: Koting>(with data: Data) -> T? {
-        guard let topObject = try? unarchiveTopLevelObjectWithData(data as NSData),
+        guard let topObject = try? unarchiveTopLevelObjectWithData(data),
             let objects = topObject as? [AnyHashable: Any] else {
                 
             return nil
